@@ -1,0 +1,67 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Co-working Space",
+    description:
+      "Our member-accessed facility offers flexible and private workspaces, secure high-speed Wi-Fi, and a happening community of bitcoiners to develop and collaborate with.",
+    icon: "bx:bxs-briefcase",
+  },
+  {
+    title: "Events Venue",
+    description:
+      "Discover our dynamic venue hosting a variety of bitcoin events. From educational presentations and happy hour social gatherings to weekend workshops, we are the hub for all your bitcoin interests.",
+    icon: "bx:bxs-window-alt",
+  },
+  {
+    title: "Test Bench and Workshops",
+    description:
+      "Discover the ultimate test-bench and troubleshooting station. Whether you are a beginner or a node running pro, our space is your hands-on destination for mastering hardware and bitcoin tech solutions.",
+    icon: "bx:bxs-data",
+  },
+  {
+    title: "Simple Membership",
+    description:
+      "A single membership fee makes for transparent, fair access for all.",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "Developer Support",
+    description:
+      "Surround yourself by the brightest bitcoin tech minds in the region.",
+    icon: "bx:bxs-file-find",
+  },
+  {
+    title: "Community Hub",
+    description: "Enjoy coworking with a community and a place to hang out.",
+    icon: "bx:bxs-user",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    A Community Built by and for Bitcoiners
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Enter The Space - you'll never want to leave.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

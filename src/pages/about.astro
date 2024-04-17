@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { Picture } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Hero from "@components/hero.astro";
+
+// Filter team entries with 'draft: false' & date before current date
+const publishedTeamMembers = await getCollection("team", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+---
+
+<Layout title="About">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">About</Fragment>
+      <Fragment slot="desc"
+        >We are building a community hub for bitcoiners within the Rocky
+        Mountain region.</Fragment
+      >
+    </Sectionhead>
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="text-center font-bold text-3xl text-gray-800">
+        Member-operated and member-owned
+      </h2>
+    </div><br />
+    <Picture
+      src="/assets/hero.png"
+      alt="the space logo"
+      sizes="(max-width: 800px) 100vw, 400px"
+      width={400}
+      height={400}
+      class="w-full rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
+    />
+  </Container>
+</Layout>

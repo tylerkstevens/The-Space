@@ -1,0 +1,61 @@
+---
+import { Picture } from "astro:assets";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24"
+>
+  <div class="py-6 md:order-1 hidden rounded md:block">
+    <Picture
+      src="/assets/hero.png"
+      alt="the space logo"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      width={400}
+      height={400}
+      loading="eager"
+      format="avif"
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter"
+    >
+      The Space
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      The Space is a member-owner and operated bitcoin community.<wbr /> We’re focused
+      on building the premier place to collaborate, educate, socialize and accelerate
+      freedom and bitcoin adoption.<wbr />
+      Founded <a
+        href="https://mempool.space/tx/0650359ea926ea167ab9e25b703ee723bf6bc2732ca33d873d00e17da55302ab"
+        ><b>Block 836,738.</b>
+      </a>
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link
+        href="#"
+        href="/pricing"
+        target="_blank"
+        class="flex gap-1 items-center justify-center"
+        rel="noopener"
+      >
+        <Icon class="text-white w-5 h-5" name="bx:bxs-group" />
+        Become a Member
+      </Link>
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://t.me/+LE0wv_mKj-4xM2Qx"
+        class="flex gap-1 items-center justify-center"
+        target="_blank"
+      >
+        <Icon class="text-black w-4 h-4" name="bx:bxl-telegram" />
+        Member Chat
+      </Link>
+    </div>
+  </div>
+</main>

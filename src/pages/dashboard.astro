@@ -1,0 +1,122 @@
+---
+export const prerender = false;
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { supabase } from "../lib/supabase";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (!accessToken || !refreshToken) {
+  return redirect("/signin");
+}
+
+const { data, error } = await supabase.auth.setSession({
+  refresh_token: refreshToken.value,
+  access_token: accessToken.value,
+});
+
+if (error) {
+  cookies.delete("sb-access-token", {
+    path: "/",
+  });
+  cookies.delete("sb-refresh-token", {
+    path: "/",
+  });
+
+  return redirect("/signin");
+}
+
+const email = data.user?.email;
+---
+
+<Layout title="Dashboard">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Member Dashboard</Fragment>
+      <Fragment slot="desc">Links and other information for members.</Fragment>
+    </Sectionhead>
+    <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
+      <section class="w-full max-w-md">
+        <h1 class="text-zinc-900 w-full mb-1">
+          Welcome and grow a pair, {email}
+        </h1>
+        <form
+          class="grid grid-cols-1 gap-3 w-full"
+          action="https://t.me/+8Kd3I1llKxplYmEx"
+        >
+          <button
+            type="submit"
+            class="bg-zinc-900
+            border-zinc-900
+            py-1.5
+            border
+            rounded-md
+            mt-2
+            text-zinc-100
+            font-medium
+            text-sm
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-blue-500
+            disabled:opacity-50
+            disabled:cursor-not-allowed"
+            >Members-Only Telegram</button
+          >
+        </form>
+        <form
+          class="grid grid-cols-1 gap-3 w-full"
+          action="https://lns.lightningshops.io/apps/3XhqvdXgA8RT59qDG12TwuXKRfu4/pos"
+        >
+          <button
+            type="submit"
+            class="bg-zinc-900
+            border-zinc-900
+            py-1.5
+            border
+            rounded-md
+            mt-2
+            text-zinc-100
+            font-medium
+            text-sm
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-blue-500
+            disabled:opacity-50
+            disabled:cursor-not-allowed"
+            >Early Bird Dues Payment</button
+          >
+          <form
+            class="grid grid-cols-1 gap-3 w-full"
+            action="/api/auth/signout"
+          >
+            <button
+              type="submit"
+              class="bg-zinc-900
+            border-zinc-900
+            py-1.5
+            border
+            rounded-md
+            mt-2
+            text-zinc-100
+            font-medium
+            text-sm
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-blue-500
+            disabled:opacity-50
+            disabled:cursor-not-allowed"
+              >Sign Out</button
+            >
+          </form>
+        </form>
+      </section>
+    </main>
+  </Container>
+</Layout>
