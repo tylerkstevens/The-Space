@@ -4,10 +4,10 @@ title: "Our Founding Bylaws - The Space Charter"
 snippet: "Our Founding Bylaws - The Space Charter."
 image: {
     src: "/assets/spacecharter.svg",
-    alt: "the Space Charter and Bylaws"
+    alt: "The Space Charter and Bylaws"
 }
 publishDate: "2024-04-10 21:00"
-category: "Founding"
+category: "Documents"
 author: "Board of Directors"
 tags: [founding, values, membership]
 ---

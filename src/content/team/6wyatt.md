@@ -1,7 +1,7 @@
 ---
 draft: false
 name: "Wyatt O."
-title: "Chief Marketing Officer"
+title: "Chief Community Officer"
 avatar: {
     src: "/assets/headshots/wyatt.jpg",
     alt: "Wyatt O."
