@@ -23,7 +23,7 @@ const pricing = [
     ],
     button: {
       text: "Join Now",
-      link: "/contact",
+      link: "https://lns.lightningshops.io/apps/3otbAyyp3TDiurkXSgCD9s1MdmGB/pos",
     },
   },
   {
@@ -50,7 +50,7 @@ const pricing = [
       discount: "0%",
       original: "$150",
     },
-    popular: true,
+    popular: false,
     features: [
       "Exclusive Events & Seminars",
       "Private Messaging Channels",
@@ -63,16 +63,15 @@ const pricing = [
     ],
     button: {
       text: "Apply for Membership",
-      link: "/contact",
+      link: "",
     },
   },
   {
     name: "Add-Ons",
     price: "Custom",
-    popular: true,
+    popular: false,
     features: [
-      "Reserved Desk Space",
-      "Reserved Office Space",
+      "Reserved Desk / Office Space",
       "Host your Own Events & Seminars",
       "Sponsorship Opportunities",
       "Consignment Merchandising",
@@ -82,7 +81,7 @@ const pricing = [
     ],
     button: {
       text: "Contact us",
-      link: "/contact",
+      link: "",
     },
   },
 ];
@@ -92,11 +91,8 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Membership</Fragment>
-      <Fragment slot="desc"> Simple Baseline Pricing. No Surprises. <br/> <br/>
-        <br/>We're creating The Space from the ground up. We need to build a treasury and complete formal steps to offer the premeir bitcoin hub. <br/>
-        <br/>As a result, we've decided to start collecting membership dues prior to offering a physical location and all of our intended member benefits. <br/>
-        Your founding support helps us make this vision a reality and solidify Denver's global bitcoin influence. <br/><br/>
-        Founding Membership dues are discounted from baseline pricing until we open the physical location.
+      <Fragment slot="desc"> Simple Pricing. No Surprises. <br/> <br/>
+        <br/>We’re building The Space. Become a founding member by paying predues to help us create this from the ground up. <br/>
       </Fragment>
     </Sectionhead>
     <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
