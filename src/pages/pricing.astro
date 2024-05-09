@@ -5,17 +5,37 @@ import Sectionhead from "@components/sectionhead.astro";
 import PricingCard from "@components/pricing.astro";
 
 const pricing = [
+{
+    name: "Founding Memeber - Temporary Until Physical Location",
+    price: {
+      monthly: "$125/mo",
+      annual: "$1500",
+      discount: "17%",
+      original: "$150",
+    },
+    popular: true,
+    features: [
+      "Monthly Member Events",
+      "Private Messaging Channels",
+      "Extensive Involvement Opportunities",
+      "Support and Create Something Special",
+      "Satisfaction of Helping Start a Movement",
+    ],
+    button: {
+      text: "Join Now",
+      link: "/contact",
+    },
+  },
   {
     name: "Public",
     price: "Free",
-    popular: false,
+    popular: true,
     features: [
-      "Public Messaging Channels",
-      "Free Events",
+      "Free & Ticketed Events",
+      "Public Content and Seminars",
+      "Open Source Documentation",
       "Newsletter",
-      "Community",
-      " ",
-      " ",
+      "and more...",
     ],
     button: {
       text: "Get Started",
@@ -25,38 +45,40 @@ const pricing = [
   {
     name: "Member",
     price: {
-      monthly: "$150",
+      monthly: "$150/mo",
       annual: "$1800",
       discount: "0%",
       original: "$150",
     },
     popular: true,
     features: [
-      "Member only Events & Seminars",
-      "Floating Desk Space",
-      "Facility Amenities",
+      "Exclusive Events & Seminars",
       "Private Messaging Channels",
+      "Shared Desk and Lounge Space",
+      "Coworking and Creator Amenities",
+      "Physical Community",
+      "Networking",
       "Nostr Verification",
-      "Professional Networking",
-      "All Free Features",
-      "and more...",
+      "+ Free Benefits & more...",
     ],
     button: {
-      text: "Get Started",
-      link: "https://dues.denver.space",
+      text: "Apply for Membership",
+      link: "/contact",
     },
   },
   {
     name: "Add-Ons",
     price: "Custom",
-    popular: false,
+    popular: true,
     features: [
-      "Reserved Desk / Office Space",
-      "Lightning Channel Liquidity",
-      "Host your Own Events",
+      "Reserved Desk Space",
+      "Reserved Office Space",
+      "Host your Own Events & Seminars",
       "Sponsorship Opportunities",
       "Consignment Merchandising",
-      "and more..",
+      "Lightning Channel Liquidity",
+      "One on One Education",
+      "+ Member Benefits & more...",
     ],
     button: {
       text: "Contact us",
@@ -70,11 +92,19 @@ const pricing = [
   <Container>
     <Sectionhead>
       <Fragment slot="title">Membership</Fragment>
-      <Fragment slot="desc"> Simple Membership. No Surprises. </Fragment>
+      <Fragment slot="desc"> Simple Baseline Pricing. No Surprises. <br/> <br/>
+        <br/>We're creating The Space from the ground up. We need to build a treasury and complete formal steps to offer the premeir bitcoin hub. <br/>
+        <br/>As a result, we've decided to start collecting membership dues prior to offering a physical location and all of our intended member benefits. <br/>
+        Your founding support helps us make this vision a reality and solidify Denver's global bitcoin influence. <br/><br/>
+        Founding Membership dues are discounted from baseline pricing until we open the physical location.
+      </Fragment>
     </Sectionhead>
-
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-      {pricing.map((item) => <PricingCard plan={item} />)}
+    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
+      <div class="md:col-span-3 md:mb-8">
+        <PricingCard plan={pricing[0]} />
+      </div>
+      {pricing.slice(1).map((item) => <PricingCard plan={item} />)}
     </div>
   </Container>
 </Layout>
+
