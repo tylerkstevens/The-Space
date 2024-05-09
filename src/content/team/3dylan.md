@@ -2,6 +2,7 @@
 draft: false
 name: "Dylan S."
 title: "Chief Financial Officer"
+bio: "Structural engineer by trade, bitcoin finance guru by hobby."
 avatar: {
     src: "/assets/headshots/dylan.jpg",
     alt: "Dylan S."

@@ -1,60 +1,97 @@
 ---
+// Existing imports and setup remain the same
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
+const upcomingEvents = await getCollection("events", ({ data }) => {
+  return !data.draft && new Date(data.date) >= new Date();
+});
+
+let pastEvents = await getCollection("events", ({ data }) => {
+  return !data.draft && new Date(data.date) < new Date();
+});
+
+// Sort past events in descending order by date
+pastEvents = pastEvents.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
 ---
 
-<Layout title="Board of Directors">
+<Layout title="Events">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Event Schedule</Fragment>
-      <Fragment slot="desc"
-        >The Space hosts monthly private events for members.</Fragment
-      >
+      <Fragment slot="title">Events</Fragment>
+      <Fragment slot="desc">
+        Discover our upcoming and past events.
+      </Fragment>
     </Sectionhead>
 
+    <!-- Upcoming Events Section -->
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Passionate about bitcoin and community.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        The Board of Directors consists of nine individuals around the Denver
-        area, passionate about bitcoin, open source technologies, and building a
-        community around freedom. We come from diverse backgrounds bringing
-        different personalities, experiences and skills to the board.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
+      <h2 class="font-bold text-3xl text-gray-800">Upcoming Events</h2>
+      <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+        {upcomingEvents.map(event => (
           <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
+            <div class="relative w-full aspect-square">
+              <img src={event.data.image?.src || '/default-event-image.png'}
+                   alt={event.data.title}
+                   class="w-full rounded bg-white object-cover object-center aspect-square" />
+              <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
+                <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
+                <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+                <p class="w-full">Location:<br/>{event.data.location}</p>
+                <p class="w-full">Description:<br/>{event.data.description}</p>
+              </div>
             </div>
-
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
+            <div class="mt-4 text-center px-4">
+              {event.data.url ? (
+                <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-gray-800 hover:underline">
+                  {event.data.title}
+                </a>
+              ) : (
+                <h3 class="text-lg text-gray-800">{event.data.title}</h3>
+              )}
+              <p class="text-sm text-gray-500">{new Date(event.data.date).toLocaleDateString()}</p>
+              <p class="text-sm text-red-500">{event.data.access}</p>
             </div>
           </div>
-        ))
-      }
+        ))}
+      </div>
     </div>
+
+ <!-- Past Events Section -->
+ <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+  <h2 class="font-bold text-3xl text-gray-800">Past Events</h2>
+  <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+    {pastEvents.map(event => (
+      <div class="group">
+        <div class="relative w-full aspect-square">
+          <img src={event.data.image?.src || '/default-event-image.png'}
+               alt={event.data.title}
+               class="w-full rounded bg-white object-cover object-center aspect-square" />
+          <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
+            <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
+            <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+            <p class="w-full">Location:<br/>{event.data.location}</p>
+            <p class="w-full">Description:<br/>{event.data.description}</p>
+          </div>
+        </div>
+        <div class="mt-4 text-center px-4">
+          {event.data.url ? (
+            <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-gray-800 hover:underline">
+              {event.data.title}
+            </a>
+          ) : (
+            <h3 class="text-lg text-gray-800">{event.data.title}</h3>
+          )}
+          <p class="text-sm text-gray-500">{new Date(event.data.date).toLocaleDateString()}</p>
+          <p class="text-sm text-red-500">{event.data.access}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
   </Container>
 </Layout>

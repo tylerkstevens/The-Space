@@ -2,6 +2,7 @@
 draft: false
 name: "Eric Y."
 title: "Member Representative"
+bio: "Author of The 7th Property and founder of Epoch VC."
 avatar: {
     src: "/assets/headshots/eric.jpg",
     alt: "Eric Y."

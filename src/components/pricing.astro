@@ -4,10 +4,11 @@ import Link from "@components/ui/link.astro";
 
 const { plan } = Astro.props;
 const isComingSoon = plan.name !== "Founding Memeber - Temporary Until Physical Location";
+const isTemporaryOption = plan.name === "Founding Memeber - Temporary Until Physical Location";
 ---
 
 <div class="flex flex-col h-full">
-  <div class="flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-10 px-6 rounded-md relative" style="min-height: 450px;">
+  <div class="flex flex-col w-full order-first lg:order-none border-2 border-[#D8DEE9] border-opacity-50 py-10 px-6 rounded-md relative" style={`min-height: ${isTemporaryOption ? '450px' : '600px'}`}>
     <div class={`absolute top-0 left-0 px-2 py-1 bg-blue-500 text-white rounded-br-md ${isComingSoon ? '' : 'hidden'}`}>Coming Soon</div>
     <div class="text-center mb-8">
       <h4 class="text-lg font-medium text-gray-400">{plan.name}</h4>
