@@ -2,7 +2,7 @@
 draft: false
 name: "David C."
 title: "Member Representative"
-bio: "Anarchist, educator, and tech wizard."
+bio: "Sovereign life coach with an itchy trigger finger."
 avatar: {
     src: "/assets/headshots/david.jpeg",
     alt: "David C."

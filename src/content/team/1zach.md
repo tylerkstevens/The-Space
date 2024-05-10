@@ -2,7 +2,7 @@
 draft: false
 name: "Zach W."
 title: "Chairman of the Board"
-bio: "Host of the Denver BitDevs meetup, Value Stack Podcast and member of the Casa team."
+bio: "Host of Value Stack Podcast and Denver BitDevs. Probably explaining multisig to your grandma right now."
 avatar: {
     src: "/assets/headshots/zach.jpeg",
     alt: "Zach W."
