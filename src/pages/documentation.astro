@@ -1,53 +1,32 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
+// Import necessary components and setup
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Hero from "@components/hero.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
 ---
 
 <Layout title="Documentation">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Documentation</Fragment>
-      <Fragment slot="desc"
-        >Charter, Member Handbook, and FOSS Documentation.</Fragment
-      >
+      <Fragment slot="desc">Explore our comprehensive documentation to learn more about our initiatives and processes.</Fragment>
     </Sectionhead>
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Member Ownded and Operated
-      </h2>
-    </div><br />
 
-    </Sectionhead>
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Commitment to Our Values
-      </h2>
-    </div><br />
-
-  </Sectionhead>
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Open Source the Model
-      </h2>
-    </div><br />
-
-  <Container>
-    <Picture
-      src="/assets/hero.png"
-      alt="the space logo"
-      sizes="(max-width: 800px) 100vw, 400px"
-      width={400}
-      height={400}
-      class="w-full rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-    />
+    <div class="flex">
+      <!-- Sidebar for navigation -->
+      <div class="w-64 min-h-screen p-5 bg-gray-200">
+        <h3 class="font-bold text-xl mb-5">Documentation</h3>
+        <ul>
+          <li><a href="/docs/charter" class="block py-2 text-blue-500 hover:text-blue-600">Charter</a></li>
+          <li><a href="/docs/member-handbook" class="block py-2 text-blue-500 hover:text-blue-600">Member Handbook</a></li>
+          <li><a href="/docs/foss-tech-stack" class="block py-2 text-blue-500 hover:text-blue-600">FOSS Tech Stack Outline</a></li>
+        </ul>
+      </div>
+      <!-- Main content area -->
+      <div class="flex-1 p-5">
+        <h1>Welcome to Our Documentation</h1>
+        <p>This is your starting point to access all the essential documents related to our organization. Select a document from the sidebar to get started.</p>
+      </div>
+    </div>
   </Container>
 </Layout>

@@ -2,7 +2,7 @@
 draft: false
 name: "Wyatt O."
 title: "Chief Community Officer"
-bio: "Founder of Basilic Financial, a bitcoin wealth management company."
+bio: "Founder of Basilic Financial, a bitcoin wealth management frim."
 avatar: {
     src: "/assets/headshots/wyatt.jpg",
     alt: "Wyatt O."

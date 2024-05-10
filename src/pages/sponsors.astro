@@ -1,14 +1,12 @@
 ---
-// Import necessary modules and configuration
+// Existing imports and setup remain the same
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedSponsors = await getCollection("sponsor", ({ data }) => {
-  return !data.draft && new Date(data.publishDate) < new Date();
+const publishedSponsors = await getCollection("sponsors", ({ data }) => {
+  return !data.draft && new Date(data.publishDate) <= new Date();
 });
 ---
 
@@ -17,46 +15,29 @@ const publishedSponsors = await getCollection("sponsor", ({ data }) => {
     <Sectionhead>
       <Fragment slot="title">Sponsors</Fragment>
       <Fragment slot="desc">
-        The Space was made possible by founding donors and sponsors.
+        The Space was made possible by our founding donors and sponsors.
       </Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Value Aligned Support
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We believe in building personal relationships with organizations and individuals that share our values. These supporting groups help us showcase the bitcoin community and all the hard work everyone's doing in the space.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedSponsors.map((sponsorEntry) => (
-          <div class="group relative">
-            <div class="relative w-full aspect-square">  <!-- Make this div relative -->
-              <Picture
-                src={sponsorEntry.data.avatar.src}
-                alt={sponsorEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded bg-white object-cover object-center aspect-square"
-              />
-              <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3">
-                <h3 class="text-xl font-semibold">{sponsorEntry.data.name}</h3>
-                <p>{sponsorEntry.data.bio}</p>
-              </div>
+      <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
+      <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+        {publishedSponsors.map(sponsor => (
+          <div class="group">
+            <div class="relative w-full aspect-square">
+              <img src={sponsor.data.avatar?.src || '/default-event-image.png'}
+                  alt={sponsor.data.avatar.alt || 'Sponsor Image'}
+                  class="w-full rounded bg-white object-cover object-center aspect-square" />
+              <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3 group-hover:opacity-100">
+                <h3 class="text-lg font-semibold text-center w-full">{sponsor.data.name}</h3>
+              </a>
             </div>
-
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{sponsorEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {sponsorEntry.data.title}
-              </h3>
+            <div class="mt-4 text-center px-4">
+              <p class="text-gray-600">{sponsor.data.title}</p>
             </div>
           </div>
-        ))
-      }
+        ))}
+      </div>
     </div>
   </Container>
 </Layout>

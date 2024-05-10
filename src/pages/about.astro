@@ -1,54 +1,54 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
+// Import necessary components and setup
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import Hero from "@components/hero.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
 ---
 
-<Layout title="About">
+<Layout title="About Us">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc"
-        >We're building a community hub for bitcoiners within the Rocky
-        Mountain region. Here's how.</Fragment
-      >
+      <Fragment slot="title">About Us</Fragment>
+      <Fragment slot="desc">Learn more about The Space and our commitment to making a difference.</Fragment>
     </Sectionhead>
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Member Ownded and Operated
-      </h2>
-    </div><br />
 
-    </Sectionhead>
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Commitment to Our Values
-      </h2>
-    </div><br />
+    <div class="space-y-10">
+      <!-- About The Space -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-800">About The Space</h2>
+        <p class="mt-2">
+          The Space is a nonprofit organization dedicated to [brief description of your main focus]. Our mission is to [mission statement]. We are committed to [highlight a key commitment or goal].
+        </p>
+      </section>
+      
+      <!-- Our Vision -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-800">Our Vision</h2>
+        <p class="mt-2">
+          Our vision at The Space is to [vision statement]. We strive to [describe the future state or goal you are working towards].
+        </p>
+      </section>
 
-  </Sectionhead>
-  <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="text-center font-bold text-3xl text-gray-800">
-        Open Source the Model
-      </h2>
-    </div><br />
+      <!-- Values -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-800">Values</h2>
+        <p class="mt-2">
+          At The Space, we uphold values that include:
+          <ul class="list-disc ml-5 mt-1">
+            <li>Value 1 - [Description]</li>
+            <li>Value 2 - [Description]</li>
+            <li>Value 3 - [Description]</li>
+          </ul>
+        </p>
+      </section>
 
-  <Container>
-    <Picture
-      src="/assets/hero.png"
-      alt="the space logo"
-      sizes="(max-width: 800px) 100vw, 400px"
-      width={400}
-      height={400}
-      class="w-full rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-    />
+      <!-- History -->
+      <section>
+        <h2 class="text-2xl font-bold text-gray-800">History</h2>
+        <p class="mt-2">
+          Founded in [Year], The Space began as [brief origin story]. Over the years, we have [highlight key milestones and achievements].
+        </p>
+      </section>
+    </div>
   </Container>
 </Layout>

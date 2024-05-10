@@ -2,6 +2,7 @@
 draft: false
 name: "Sazmining"
 title: "Sponsor"
+url: "https://www.sazmining.com"
 avatar: {
     src: "/assets/sponsors/sazmining_logo.jpeg",
     alt: "Sazmining"
