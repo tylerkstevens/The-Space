@@ -1,5 +1,4 @@
 ---
-// Import necessary components and setup
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -12,42 +11,124 @@ import Sectionhead from "@components/sectionhead.astro";
       <Fragment slot="desc">Learn more about The Space and our commitment to making a difference.</Fragment>
     </Sectionhead>
 
-    <div class="space-y-10">
+    <div class="space-y-16">
       <!-- About The Space -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800">About The Space</h2>
-        <p class="mt-2">
-          The Space is a nonprofit organization dedicated to [brief description of your main focus]. Our mission is to [mission statement]. We are committed to [highlight a key commitment or goal].
-        </p>
+      <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
+        <img src="/images/about-us.jpg" alt="About The Space" class="w-full lg:w-1/2 rounded-lg shadow-md" />
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold text-gray-800">About The Space</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            The Space is a nonprofit organization dedicated to [brief description of your main focus]. Our mission is to [mission statement]. We are committed to [highlight a key commitment or goal].
+          </p>
+        </div>
       </section>
-      
+
       <!-- Our Vision -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800">Our Vision</h2>
-        <p class="mt-2">
+      <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
+        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
           Our vision at The Space is to [vision statement]. We strive to [describe the future state or goal you are working towards].
         </p>
       </section>
 
       <!-- Values -->
-      <section>
-        <h2 class="text-2xl font-bold text-gray-800">Values</h2>
-        <p class="mt-2">
-          At The Space, we uphold values that include:
-          <ul class="list-disc ml-5 mt-1">
+      <section class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-800">Values</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            At The Space, we uphold values that include:
+          </p>
+          <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
             <li>Value 1 - [Description]</li>
             <li>Value 2 - [Description]</li>
             <li>Value 3 - [Description]</li>
           </ul>
-        </p>
+        </div>
+        <img src="/images/values.jpg" alt="Our Values" class="w-full rounded-lg shadow-md" />
       </section>
 
       <!-- History -->
+      <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
+        <img src="/images/history.jpg" alt="History" class="w-full lg:w-1/2 rounded-lg shadow-md" />
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold text-gray-800">History</h2>
+          <p class="mt-4 text-lg text-gray-600">
+            Founded in [Year], The Space began as [brief origin story]. Over the years, we have [highlight key milestones and achievements].
+          </p>
+        </div>
+      </section>
+
+      <!-- Unique Table -->
       <section>
-        <h2 class="text-2xl font-bold text-gray-800">History</h2>
-        <p class="mt-2">
-          Founded in [Year], The Space began as [brief origin story]. Over the years, we have [highlight key milestones and achievements].
-        </p>
+        <h2 class="text-3xl font-bold text-gray-800 text-center">The Space is Unique!</h2>
+        <div class="overflow-auto mt-8">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">#</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Name</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Social Hub</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Education</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Defined Mission</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Public Events</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Coworking</th>
+                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Member Owned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">1</td>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">The Space</td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">2</td>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Other Bitcoin Hubs</td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">3</td>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Traditional Social Clubs</td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">4</td>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Value Aligned Groups</td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">5</td>
+                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Coworking Centers</td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+                <td class="border border-gray-200 p-2 bg-green-500"></td>
+                <td class="border border-gray-200 p-2 bg-red-500"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
     </div>
   </Container>

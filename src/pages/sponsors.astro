@@ -4,10 +4,29 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import PricingCard from "@components/pricing.astro"; // Import PricingCard component
 
 const publishedSponsors = await getCollection("sponsors", ({ data }) => {
   return !data.draft && new Date(data.publishDate) <= new Date();
 });
+
+const sponsorPlan = {
+  name: "Become a Sponsor",
+  price: "Support The Mission",
+  popular: true,
+  features: [
+    "Dedicated Coworking Space",
+    "Host your Own Events & Seminars",
+    "Branding Recognition & Marketing",
+    "Sell your Goods and Services",
+    "Exclusive Community Access",
+    "Bitcoin Community Clout & more..."
+  ],
+  button: {
+    text: "Sponsor Us",
+    link: "/contact"
+  }
+};
 ---
 
 <Layout title="Sponsors">
@@ -15,13 +34,19 @@ const publishedSponsors = await getCollection("sponsors", ({ data }) => {
     <Sectionhead>
       <Fragment slot="title">Sponsors</Fragment>
       <Fragment slot="desc">
-        The Space was made possible by our founding donors and sponsors.
+        The Space is made possible by founding donors and sponsors. <br/> Join us in building something special.
       </Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-4xl mt-12">
+      <div class="md:col-span-3 md:mb-8">
+        <PricingCard plan={sponsorPlan} />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-5">
       <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
-      <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+      <div class="grid md:grid-cols-4 gap-10 mx-auto max-w-4xl mt-12">
         {publishedSponsors.map(sponsor => (
           <div class="group">
             <div class="relative w-full aspect-square">
