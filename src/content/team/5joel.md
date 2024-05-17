@@ -2,7 +2,7 @@
 draft: false
 name: "Joel K."
 title: "Chief Operating Officer"
-bio: "Founder of Bitcoin For Bullies, a non-profit focused on educating dog owners and business on bitcoin."
+bio: "Founder of Bitcoin for Bullies, a dog rescue non-profit with emphasis on educating businesses and the public on the merits of bitcoin."
 avatar: {
     src: "/assets/headshots/joel.jpg",
     alt: "Joel K."

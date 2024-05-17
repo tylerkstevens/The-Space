@@ -1,60 +1,65 @@
 ---
-import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
 ---
 
-<Layout title="Venue">
+<Layout title="Our Future Venue">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Venue</Fragment>
-      <Fragment slot="desc"
-        >We're in the process of selecting a real estate location for The Space.</Fragment
-      >
+      <Fragment slot="title">Our Future Venue</Fragment>
+      <Fragment slot="desc">Help us build an inspiring space for our community in Denver!</Fragment>
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Our Ideal Location has Extensive Amenities 
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        The Board of Directors consists of nine individuals around the Denver
-        area, passionate about bitcoin, open source technologies, and building a
-        community around freedom. We come from diverse backgrounds bringing
-        different personalities, experiences and skills to the board.
-      </p>
+    <!-- Denver Skyline Image -->
+    <div class="mt-8">
+      <img src="/assets/denver_skyline_spacerace.jpg" alt="Denver Skyline" class="w-full h-auto rounded-lg shadow-md" />
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
-          </div>
-        ))
-      }
+    <div class="space-y-16 mt-16">
+      <!-- Vision for Our Venue -->
+      <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
+        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+          We are excited to build a vibrant and inclusive space from the ground up in the heart of Denver. Our future venue will be a hub of innovation, creativity, and community, featuring:
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600 text-left mx-auto max-w-2xl">
+          <li>Shared desk space</li>
+          <li>Dedicated desk space</li>
+          <li>Private offices</li>
+          <li>Fully equipped kitchen</li>
+          <li>Multiple bathrooms</li>
+          <li>Outdoor area</li>
+          <li>Podcast studio</li>
+          <li>Tinker station with tools and 220V power</li>
+          <li>Hangout lounge space</li>
+          <li>Large space for events and parties</li>
+        </ul>
+        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+          Located in the Denver area, our venue will be easily accessible by RTD public transit, including light rail and buses.
+        </p>
+      </section>
+
+      <!-- Call to Action for Support -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800 text-center">Join Us in Making This Vision a Reality</h2>
+        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl text-center">
+          We are starting with $0 in our treasury and need grassroots support to bring this vision to life. Your contributions and membership are crucial in helping us create a space that fosters innovation, collaboration, and community growth.
+        </p>
+        <div class="flex justify-center mt-8">
+          <a href="/support-us" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+            Support Us
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact Information -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Get Involved</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          For more information on how you can contribute, become a member, or support our initiative, please contact us at info@thespace.org or call us at (123) 456-7890. Together, we can build something amazing!
+        </p>
+      </section>
     </div>
   </Container>
 </Layout>

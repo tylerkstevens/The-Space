@@ -2,7 +2,7 @@
 draft: false
 name: "Joey M."
 title: "Chief Administrative Officer"
-bio: "Bookeeping expert."
+bio: "Bitcoin bookkeeper and an emotional healing practitioner offering therapeutic services."
 avatar: {
     src: "/assets/headshots/joey.webp",
     alt: "Joey M."

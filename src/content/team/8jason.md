@@ -2,7 +2,7 @@
 draft: false
 name: "Jason W."
 title: "Member Representative"
-bio: "Cattle farmer and Beekeeper at Wrich Ranches. Co-founder of The Beef Initiative"
+bio: "Regenerative Cattle Rancher,  Educator, Founding Member of the BeefInitiative"
 avatar: {
     src: "/assets/headshots/jason.png",
     alt: "Jason W."

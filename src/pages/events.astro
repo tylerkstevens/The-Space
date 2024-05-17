@@ -1,5 +1,4 @@
 ---
-// Existing imports and setup remain the same
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
@@ -33,15 +32,21 @@ pastEvents = pastEvents.sort((a, b) => {
       <h2 class="font-bold text-3xl text-gray-800">Upcoming Events</h2>
       <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
         {upcomingEvents.map(event => (
-          <div class="group">
+          <div class="group border-4 border-[#D9314A] rounded-lg p-2">
             <div class="relative w-full aspect-square">
               <img src={event.data.image?.src || '/default-event-image.png'}
                    alt={event.data.title}
                    class="w-full rounded bg-white object-cover object-center aspect-square" />
               <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
                 <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
-                <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
-                <p class="w-full">Location:<br/>{event.data.location}</p>
+                {event.data.access !== "Member Exclusive" ? (
+                  <>
+                    <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+                    <p class="w-full">Location:<br/>{event.data.location}</p>
+                  </>
+                ) : (
+                  <p class="text-red-500">Log in or become a Member to view exclusive event details!</p>
+                )}
                 <p class="w-full">Description:<br/>{event.data.description}</p>
               </div>
             </div>
@@ -61,37 +66,43 @@ pastEvents = pastEvents.sort((a, b) => {
       </div>
     </div>
 
- <!-- Past Events Section -->
- <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-  <h2 class="font-bold text-3xl text-gray-800">Past Events</h2>
-  <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
-    {pastEvents.map(event => (
-      <div class="group">
-        <div class="relative w-full aspect-square">
-          <img src={event.data.image?.src || '/default-event-image.png'}
-               alt={event.data.title}
-               class="w-full rounded bg-white object-cover object-center aspect-square" />
-          <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
-            <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
-            <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
-            <p class="w-full">Location:<br/>{event.data.location}</p>
-            <p class="w-full">Description:<br/>{event.data.description}</p>
+    <!-- Past Events Section -->
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">Past Events</h2>
+      <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+        {pastEvents.map(event => (
+          <div class="group border-4 border-[#D9314A] rounded-lg p-2">
+            <div class="relative w-full aspect-square">
+              <img src={event.data.image?.src || '/default-event-image.png'}
+                   alt={event.data.title}
+                   class="w-full rounded bg-white object-cover object-center aspect-square" />
+              <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
+                <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
+                {event.data.access !== "Member Exclusive" ? (
+                  <>
+                    <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+                    <p class="w-full">Location:<br/>{event.data.location}</p>
+                  </>
+                ) : (
+                  <p class="text-red-500">Log in or become a Member to view exclusive event details!</p>
+                )}
+                <p class="w-full">Description:<br/>{event.data.description}</p>
+              </div>
+            </div>
+            <div class="mt-4 text-center px-4">
+              {event.data.url ? (
+                <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-gray-800 hover:underline">
+                  {event.data.title}
+                </a>
+              ) : (
+                <h3 class="text-lg text-gray-800">{event.data.title}</h3>
+              )}
+              <p class="text-sm text-gray-500">{new Date(event.data.date).toLocaleDateString()}</p>
+              <p class="text-sm text-red-500">{event.data.access}</p>
+            </div>
           </div>
-        </div>
-        <div class="mt-4 text-center px-4">
-          {event.data.url ? (
-            <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-gray-800 hover:underline">
-              {event.data.title}
-            </a>
-          ) : (
-            <h3 class="text-lg text-gray-800">{event.data.title}</h3>
-          )}
-          <p class="text-sm text-gray-500">{new Date(event.data.date).toLocaleDateString()}</p>
-          <p class="text-sm text-red-500">{event.data.access}</p>
-        </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
+    </div>
   </Container>
 </Layout>
