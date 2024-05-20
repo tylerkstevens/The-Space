@@ -38,13 +38,8 @@ const sponsorPlan = {
       </Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-4xl mt-12">
-      <div class="md:col-span-3 md:mb-8">
-        <PricingCard plan={sponsorPlan} />
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-5">
+    <!-- Founding Sponsors Section -->
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-5 mb-20">
       <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
       <div class="grid md:grid-cols-4 gap-10 mx-auto max-w-4xl mt-12">
         {publishedSponsors.map(sponsor => (
@@ -62,6 +57,13 @@ const sponsorPlan = {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+
+    <!-- Sponsor Us Tile -->
+    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-4xl mt-12 mb-20">
+      <div class="md:col-span-3 md:mb-8">
+        <PricingCard plan={sponsorPlan} />
       </div>
     </div>
   </Container>
