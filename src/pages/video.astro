@@ -1,0 +1,70 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+---
+
+<Layout title="Videos">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Our Video Content</Fragment>
+      <Fragment slot="desc">
+        Explore our video content and learn more about our initiatives, events, and community efforts. Stay tuned for more updates on our YouTube channel.
+      </Fragment>
+    </Sectionhead>
+
+    <!-- Hero Section -->
+    <div class="relative w-full h-screen">
+      <img src="/assets/hero-video.jpg" alt="Hero Video" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center text-white">
+          <h1 class="text-4xl md:text-6xl font-bold">Watch Our Videos</h1>
+          <p class="mt-4 text-xl md:text-2xl">Discover our journey and insights through engaging video content.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Gallery Section -->
+    <div class="space-y-16 mt-16">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800 text-center">Our Videos</h2>
+        <p class="mt-4 text-lg text-gray-600 text-center">
+          Check out our collection of videos. We love sharing the impact we are making in the community.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          <!-- Placeholder Video 1 -->
+          <div class="relative group">
+            <img src="/assets/video1.jpg" alt="Video 1" class="w-full h-auto rounded-lg shadow-md group-hover:opacity-75 transition duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white p-4">
+              <h3 class="text-xl font-semibold">Video Title 1</h3>
+              <p class="mt-2">Description for video 1. Stay tuned for more updates.</p>
+              <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Watch on YouTube</a>
+            </div>
+          </div>
+
+          <!-- Placeholder Video 2 -->
+          <div class="relative group">
+            <img src="/assets/video2.jpg" alt="Video 2" class="w-full h-auto rounded-lg shadow-md group-hover:opacity-75 transition duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white p-4">
+              <h3 class="text-xl font-semibold">Video Title 2</h3>
+              <p class="mt-2">Description for video 2. Stay tuned for more updates.</p>
+              <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Watch on YouTube</a>
+            </div>
+          </div>
+
+          <!-- Placeholder Video 3 -->
+          <div class="relative group">
+            <img src="/assets/video3.jpg" alt="Video 3" class="w-full h-auto rounded-lg shadow-md group-hover:opacity-75 transition duration-300" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center text-white p-4">
+              <h3 class="text-xl font-semibold">Video Title 3</h3>
+              <p class="mt-2">Description for video 3. Stay tuned for more updates.</p>
+              <a href="https://www.youtube.com/channel/YOUR_CHANNEL_ID" target="_blank" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">Watch on YouTube</a>
+            </div>
+          </div>
+
+          <!-- Add more placeholder videos as needed -->
+        </div>
+      </section>
+    </div>
+  </Container>
+</Layout>

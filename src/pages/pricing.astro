@@ -5,8 +5,8 @@ import Sectionhead from "@components/sectionhead.astro";
 import PricingCard from "@components/pricing.astro";
 
 const pricing = [
-{
-    name: "Founding Memeber - Temporary Until Physical Location",
+  {
+    name: "Founding Member - Temporary Until Physical Location",
     price: {
       monthly: "$125/mo",
       annual: "$1500",
@@ -88,19 +88,30 @@ const pricing = [
 ---
 
 <Layout title="Pricing">
-  <Container>
-    <Sectionhead>
-      <Fragment slot="title">Membership</Fragment>
-      <Fragment slot="desc"> Simple Pricing. No Surprises. <br/> <br/>
-        <br/>We’re building The Space. Become a founding member by paying predues to help us create this from the ground up. <br/>
-      </Fragment>
-    </Sectionhead>
-    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
-      <div class="md:col-span-3 md:mb-8">
-        <PricingCard plan={pricing[0]} />
+  <!-- Upper Section with White Background -->
+  <div class="bg-white py-12">
+    <Container>
+      <Sectionhead>
+        <Fragment slot="title">Membership</Fragment>
+        <Fragment slot="desc"> Simple Pricing. No Surprises. <br/><br/>
+          We’re building The Space. Become a founding member by paying predues to help us create this from the ground up. <br/>
+        </Fragment>
+      </Sectionhead>
+      <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
+        <div class="md:col-span-3 md:mb-8">
+          <PricingCard plan={pricing[0]} />
+        </div>
       </div>
-      {pricing.slice(1).map((item) => <PricingCard plan={item} />)}
-    </div>
-  </Container>
-</Layout>
+    </Container>
+  </div>
 
+  <!-- Lower Section with Custom Background -->
+  <div class="bg-black py-12">
+    <Container>
+      <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
+        {pricing.slice(1).map((item) => (
+          <PricingCard plan={item} />
+        ))}
+      </div>
+    </Container>
+  </div>

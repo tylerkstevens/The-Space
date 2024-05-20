@@ -1,29 +1,29 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
 ---
 
 <Layout title="Our Future Venue">
-  <Container>
-    <Sectionhead>
-      <Fragment slot="title">Our Future Venue</Fragment>
-      <Fragment slot="desc">Help us build an inspiring space for our community in Denver!</Fragment>
-    </Sectionhead>
-
-    <!-- Denver Skyline Image -->
-    <div class="mt-8">
-      <img src="/assets/denver_skyline_spacerace.jpg" alt="Denver Skyline" class="w-full h-auto rounded-lg shadow-md" />
+  <!-- Denver Skyline Image with Title -->
+  <div class="relative w-full h-screen">
+    <img src="/assets/denver_skyline_spacerace.jpg" alt="Denver Skyline" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-6xl font-bold">Our Future Venue</h1>
+        <p class="mt-4 text-xl md:text-2xl">Help us build an inspiring space for our Rocky Mountain bitcoin community!</p>
+      </div>
     </div>
+  </div>
 
-    <div class="space-y-16 mt-16">
-      <!-- Vision for Our Venue -->
-      <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
-        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+  <!-- Vision for Our Venue -->
+  <div class="relative w-full h-screen mt-8">
+    <img src="/assets/vision.jpg" alt="Vision" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white max-w-2xl px-4">
+        <h2 class="text-3xl md:text-5xl font-bold">Our Vision</h2>
+        <p class="mt-4 text-lg md:text-xl">
           We are excited to build a vibrant and inclusive space from the ground up in the heart of Denver. Our future venue will be a hub of innovation, creativity, and community, featuring:
         </p>
-        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600 text-left mx-auto max-w-2xl">
+        <ul class="list-disc list-inside text-left mt-4 text-lg md:text-xl">
           <li>Shared desk space</li>
           <li>Dedicated desk space</li>
           <li>Private offices</li>
@@ -35,31 +35,39 @@ import Sectionhead from "@components/sectionhead.astro";
           <li>Hangout lounge space</li>
           <li>Large space for events and parties</li>
         </ul>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+        <p class="mt-4 text-lg md:text-xl">
           Located in the Denver area, our venue will be easily accessible by RTD public transit, including light rail and buses.
         </p>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <!-- Call to Action for Support -->
-      <section>
-        <h2 class="text-3xl font-bold text-gray-800 text-center">Join Us in Making This Vision a Reality</h2>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl text-center">
+  <!-- Call to Action for Support -->
+  <div class="relative w-full h-screen mt-8">
+    <img src="/assets/support.jpg" alt="Support Us" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white max-w-2xl px-4">
+        <h2 class="text-3xl md:text-5xl font-bold">Join Us in Making This Vision a Reality</h2>
+        <p class="mt-4 text-lg md:text-xl">
           We are starting with $0 in our treasury and need grassroots support to bring this vision to life. Your contributions and membership are crucial in helping us create a space that fosters innovation, collaboration, and community growth.
         </p>
-        <div class="flex justify-center mt-8">
-          <a href="/support-us" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
-            Support Us
-          </a>
-        </div>
-      </section>
+        <a href="/support-us" class="inline-block mt-8 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition duration-300">
+          Support Us
+        </a>
+      </div>
+    </div>
+  </div>
 
-      <!-- Contact Information -->
-      <section>
-        <h2 class="text-3xl font-bold text-gray-800">Get Involved</h2>
-        <p class="mt-4 text-lg text-gray-600">
+  <!-- Contact Information -->
+  <div class="relative w-full h-screen mt-8">
+    <img src="/assets/contact.jpg" alt="Get Involved" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="text-center text-white max-w-2xl px-4">
+        <h2 class="text-3xl md:text-5xl font-bold">Get Involved</h2>
+        <p class="mt-4 text-lg md:text-xl">
           For more information on how you can contribute, become a member, or support our initiative, please contact us at info@thespace.org or call us at (123) 456-7890. Together, we can build something amazing!
         </p>
-      </section>
+      </div>
     </div>
-  </Container>
+  </div>
 </Layout>
