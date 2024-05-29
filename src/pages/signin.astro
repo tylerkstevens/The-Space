@@ -5,8 +5,8 @@ const title = "Sign in";
 
 <Layout title={title}>
   <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
-    <section class="w-full max-w-md">
-      <h1 class="font-semibold text-2xl text-zinc-900 w-full mb-1">
+    <section class="sign-in-card bg-gradient border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1 w-full max-w-md">
+      <h1 class="font-semibold text-2xl text-white w-full mb-1">
         {title}
       </h1>
       <form
@@ -15,7 +15,7 @@ const title = "Sign in";
         class="grid grid-cols-1 gap-3 w-full"
       >
         <div class="grid grid-cols-1 gap-2">
-          <label for="email" class="font-medium text-zinc-900 text-sm"
+          <label for="email" class="font-medium text-white text-sm"
             >Email</label
           >
           <input
@@ -26,14 +26,14 @@ const title = "Sign in";
           />
         </div>
         <div class="grid grid-cols-1 gap-2">
-          <label for="password" class="font-medium text-zinc-900 text-sm"
+          <label for="password" class="font-medium text-white text-sm"
             >Password</label
           >
           <input
             id="password"
             type="password"
             name="password"
-            class="rounded-md py-1 px- border bg-zinc-50 border-zinc-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white focus:ring-opacity-60"
+            class="rounded-md py-1 px-3 border bg-zinc-50 border-zinc-300 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white focus:ring-opacity-60"
           />
         </div>
         <button
@@ -45,3 +45,25 @@ const title = "Sign in";
     </section>
   </main>
 </Layout>
+
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .bg-gradient:hover {
+    transform: translateY(-5px);
+  }
+
+  .sign-in-card {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .sign-in-card:hover {
+    transform: translateY(-5px);
+  }
+</style>

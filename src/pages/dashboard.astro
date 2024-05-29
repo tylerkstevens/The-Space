@@ -131,7 +131,7 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
           ) : (
             upcomingEvents.map(event => (
               event.data.access === "Member Exclusive" && (
-                <div class="group border-4 border-[#000000] bg-[#D9314A] rounded-lg p-2">
+                <div class="group event-card border-4 border-[#ffffff] rounded-lg p-2 transition-transform duration-500 ease hover:transform hover:translate-y-1">
                   <div class="relative w-full aspect-square">
                     <img src={event.data.image?.src || '/default-event-image.png'}
                          alt={event.data.title}
@@ -163,3 +163,25 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
     </main>
   </Container>
 </Layout>
+
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .bg-gradient:hover {
+    transform: translateY(-5px);
+  }
+
+  .event-card {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-5px);
+  }
+</style>
