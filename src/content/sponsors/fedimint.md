@@ -1,7 +1,7 @@
 ---
 draft: false
-name: "Fedimint"
-title: "Sponsor"
+name: "Learn More"
+title: "Fedimint"
 url: "https://fedimint.org"
 avatar: {
     src: "/assets/sponsors/fedimint.png",

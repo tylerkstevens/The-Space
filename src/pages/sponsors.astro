@@ -15,12 +15,13 @@ const sponsorPlan = {
   price: "Support The Mission",
   popular: true,
   features: [
-    "Dedicated Coworking Space",
+    "Dedicated Coworking or Office Space",
     "Host your Own Events & Seminars",
     "Branding Recognition & Marketing",
     "Sell your Goods and Services",
-    "Exclusive Community Access",
-    "Bitcoin Community Clout & more..."
+    "Exclusive Talent Access",
+    "Bitcoin Community Benefits",
+    "Your Ideas & more..."
   ],
   button: {
     text: "Sponsor Us",
@@ -38,33 +39,36 @@ const sponsorPlan = {
       </Fragment>
     </Sectionhead>
 
-    <!-- Founding Sponsors Section -->
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-5 mb-20">
-      <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
-      <div class="grid md:grid-cols-4 gap-10 mx-auto max-w-4xl mt-12">
-        {publishedSponsors.map(sponsor => (
-          <div class="group">
-            <div class="relative w-full aspect-square">
-              <img src={sponsor.data.avatar?.src || '/default-event-image.png'}
-                  alt={sponsor.data.avatar.alt || 'Sponsor Image'}
-                  class="w-full rounded bg-white object-cover object-center aspect-square" />
-              <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3 group-hover:opacity-100">
-                <h3 class="text-lg font-semibold text-center w-full">{sponsor.data.name}</h3>
-              </a>
-            </div>
-            <div class="mt-4 text-center px-4">
-              <p class="text-gray-600">{sponsor.data.title}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <!-- Sponsor and Founding Sponsors Section -->
+    <div class="grid md:grid-cols-2 gap-6 mx-auto max-w-6xl mt-10 mb-20 px-4 lg:px-0">
 
-    <!-- Sponsor Us Tile -->
-    <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-4xl mt-12 mb-20">
-      <div class="md:col-span-3 md:mb-8">
+      <!-- Founding Sponsors Section -->
+      <div class="order-1 md:order-2 flex flex-col gap-3">
+        <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
+        <div class="grid grid-cols-3 md:grid-cols-3 gap-6 mt-5 pr-0 lg:pr-16">
+          {publishedSponsors.map(sponsor => (
+            <div class="group">
+              <div class="relative w-full aspect-square">
+                <img src={sponsor.data.avatar?.src || '/default-event-image.png'}
+                    alt={sponsor.data.avatar.alt || 'Sponsor Image'}
+                    class="w-full h-full rounded bg-white object-contain aspect-square" />
+                <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3 group-hover:opacity-100">
+                  <h3 class="text-lg font-semibold text-center w-full">{sponsor.data.name}</h3>
+                </a>
+              </div>
+              <div class="mt-4 text-center px-4">
+                <p class="text-gray-600">{sponsor.data.title}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Sponsor Us Tile -->
+      <div class="order-2 md:order-1 md:mb-8 max-w-md mx-auto">
         <PricingCard plan={sponsorPlan} />
       </div>
+      
     </div>
   </Container>
 </Layout>

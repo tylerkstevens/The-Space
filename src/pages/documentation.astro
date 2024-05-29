@@ -1,5 +1,4 @@
 ---
-// Import necessary components and setup
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -9,24 +8,74 @@ import Sectionhead from "@components/sectionhead.astro";
   <Container>
     <Sectionhead>
       <Fragment slot="title">Documentation</Fragment>
-      <Fragment slot="desc">Explore our comprehensive documentation to learn more about our initiatives and processes.</Fragment>
+      <Fragment slot="desc">
+        Explore our comprehensive documentation and open source content. Learn about our nonprofit, our technology stack, and our operations.
+      </Fragment>
     </Sectionhead>
 
-    <div class="flex">
-      <!-- Sidebar for navigation -->
-      <div class="w-64 min-h-screen p-5 bg-gray-200">
-        <h3 class="font-bold text-xl mb-5">Documentation</h3>
-        <ul>
-          <li><a href="/docs/charter" class="block py-2 text-blue-500 hover:text-blue-600">Charter</a></li>
-          <li><a href="/docs/member-handbook" class="block py-2 text-blue-500 hover:text-blue-600">Member Handbook</a></li>
-          <li><a href="/docs/foss-tech-stack" class="block py-2 text-blue-500 hover:text-blue-600">FOSS Tech Stack Outline</a></li>
+    <div class="space-y-16 mt-8 mb-20"> <!-- Added mb-10 for margin-bottom -->
+      <!-- Nonprofit Documentation Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Transparancy</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Discover detailed information about our nonprofit organization, including our 501(c)(3) filing and other important documents.
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
+          <li><a href="/docs/nonprofit-filing.pdf" class="text-blue-600 hover:underline">501(c)(3) Filing</a></li>
+          <li><a href="/docs/nonprofit-bylaws.pdf" class="text-blue-600 hover:underline">Nonprofit Bylaws</a></li>
+          <li><a href="/docs/nonprofit-bylaws.pdf" class="text-blue-600 hover:underline">Treasury</a></li>
+          <!-- Add more links as needed -->
         </ul>
-      </div>
-      <!-- Main content area -->
-      <div class="flex-1 p-5">
-        <h1>Welcome to Our Documentation</h1>
-        <p>This is your starting point to access all the essential documents related to our organization. Select a document from the sidebar to get started.</p>
-      </div>
+      </section>
+
+      <!-- Open Source Tech Stack Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Open Source Tech Stack</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Learn about the open source technologies we use to power our organization and our commitment to transparency and collaboration.
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
+          <li><a href="/docs/open-source-tech-stack.pdf" class="text-blue-600 hover:underline">Tech Stack Documentation</a></li>
+          <!-- Add more links as needed -->
+        </ul>
+      </section>
+
+      <!-- Building Our Organization Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Building Our Organization</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Follow our journey as we built our organization from the ground up, including the challenges we faced and how we overcame them.
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
+          <li><a href="/docs/building-organization.pdf" class="text-blue-600 hover:underline">Our Journey</a></li>
+          <!-- Add more links as needed -->
+        </ul>
+      </section>
+
+      <!-- Self-Hosting and Operations Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Self-Hosting and Operations</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Detailed documentation on our self-hosting setup, Bitcoin liquidity, and other operational aspects of our organization.
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
+          <li><a href="/docs/self-hosting.pdf" class="text-blue-600 hover:underline">Self-Hosting Resources</a></li>
+          <li><a href="/docs/bitcoin-liquidity.pdf" class="text-blue-600 hover:underline">Bitcoin Liquidity</a></li>
+          <!-- Add more links as needed -->
+        </ul>
+      </section>
+
+      <!-- Open Source Auditing Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-gray-800">Open Source Auditing</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          Access our open source auditing of our Bitcoin treasury and other financial operations to ensure transparency and accountability.
+        </p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
+          <li><a href="/docs/bitcoin-treasury-audit.pdf" class="text-blue-600 hover:underline">Bitcoin Treasury Audit</a></li>
+          <!-- Add more links as needed -->
+        </ul>
+      </section>
     </div>
   </Container>
 </Layout>

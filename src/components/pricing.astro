@@ -10,7 +10,7 @@ const isLowerTier = ["Public", "Member", "Add-Ons"].includes(plan.name);
 ---
 
 <div class="flex flex-col h-full">
-  <div class={`flex flex-col w-full order-first lg:order-none border-4 py-10 px-6 rounded-md relative ${isLowerTier ? 'bg-[#ffffff] border-[#ffffff]' : 'bg-[#D9314A] border-[#000000]'}`} style={`min-height: ${isSponsorCard ? '350px' : (isTemporaryOption ? '450px' : '600px')}`}>
+  <div class={`flex flex-col w-full order-first lg:order-none border-4 py-10 px-6 rounded-md relative ${isLowerTier ? 'bg-[#ffffff] border-[#ffffff]' : isSponsorCard || isTemporaryOption ? 'bg-gradient' : 'bg-[#D9314A] border-[#000000]'}`} style={`min-height: ${isSponsorCard ? '350px' : (isTemporaryOption ? '450px' : '600px')}`}>
     <div class={`absolute top-0 left-0 px-2 py-1 bg-blue-500 text-white rounded-br-md ${isComingSoon ? '' : 'hidden'}`}>Coming Soon</div>
     <div class="text-center mb-8">
       <h4 class={`text-lg font-medium ${isLowerTier ? 'text-black' : 'text-white'}`}>{plan.name}</h4>
@@ -39,5 +39,15 @@ const isLowerTier = ["Public", "Member", "Add-Ons"].includes(plan.name);
 <style>
   .flex-grow {
     flex-grow: 1;
+  }
+
+  .bg-gradient {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .bg-gradient:hover {
+    transform: translateY(-5px);
   }
 </style>

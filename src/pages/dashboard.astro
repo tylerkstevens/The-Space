@@ -4,6 +4,7 @@ import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
 import { supabase } from "../lib/supabase";
+import { getCollection } from "astro:content";
 
 const { cookies, redirect } = Astro;
 
@@ -31,6 +32,10 @@ if (error) {
 }
 
 const email = data.user?.email;
+
+const upcomingEvents = await getCollection("events", ({ data }) => {
+  return !data.draft && new Date(data.date) >= new Date();
+});
 ---
 
 <Layout title="Dashboard">
@@ -39,14 +44,14 @@ const email = data.user?.email;
       <Fragment slot="title">Member Dashboard</Fragment>
       <Fragment slot="desc">Links and other information for members.</Fragment>
     </Sectionhead>
-    <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
+    <main class="flex-1 flex flex-col gap-4 items-center p-4 mt-5 justify-center">
       <section class="w-full max-w-md">
         <h1 class="text-zinc-900 w-full mb-1">
-          Welcome and grow a pair, {email}
+          Welcome, {email}
         </h1>
         <form
           class="grid grid-cols-1 gap-3 w-full"
-          action="https://t.me/+8Kd3I1llKxplYmEx"
+          action="https://t.me/+h4pcGVvoUJ5hOWQx"
         >
           <button
             type="submit"
@@ -55,7 +60,7 @@ const email = data.user?.email;
             py-1.5
             border
             rounded-md
-            mt-2
+            my-2
             text-zinc-100
             font-medium
             text-sm
@@ -65,12 +70,11 @@ const email = data.user?.email;
             focus:ring-blue-500
             disabled:opacity-50
             disabled:cursor-not-allowed"
-            >Members-Only Telegram</button
-          >
+            >Members-Only Telegram</button>
         </form>
         <form
           class="grid grid-cols-1 gap-3 w-full"
-          action="https://lns.lightningshops.io/apps/3XhqvdXgA8RT59qDG12TwuXKRfu4/pos"
+          action="https://lns.lightningshops.io/apps/3otbAyyp3TDiurkXSgCD9s1MdmGB/pos"
         >
           <button
             type="submit"
@@ -79,7 +83,7 @@ const email = data.user?.email;
             py-1.5
             border
             rounded-md
-            mt-2
+            my-2
             text-zinc-100
             font-medium
             text-sm
@@ -89,20 +93,20 @@ const email = data.user?.email;
             focus:ring-blue-500
             disabled:opacity-50
             disabled:cursor-not-allowed"
-            >Early Bird Dues Payment</button
-          >
-          <form
-            class="grid grid-cols-1 gap-3 w-full"
-            action="/api/auth/signout"
-          >
-            <button
-              type="submit"
-              class="bg-zinc-900
+            >Membership Dues Payment</button>
+        </form>
+        <form
+          class="grid grid-cols-1 gap-3 w-full"
+          action="/api/auth/signout"
+        >
+          <button
+            type="submit"
+            class="bg-zinc-900
             border-zinc-900
             py-1.5
             border
             rounded-md
-            mt-2
+            my-2
             text-zinc-100
             font-medium
             text-sm
@@ -112,10 +116,49 @@ const email = data.user?.email;
             focus:ring-blue-500
             disabled:opacity-50
             disabled:cursor-not-allowed"
-              >Sign Out</button
-            >
-          </form>
+            >Sign Out</button>
         </form>
+      </section>
+      
+      <!-- Upcoming Member Exclusive Events Section -->
+      <section class="w-full max-w-4xl mt-10">
+        <h2 class="font-bold text-3xl text-gray-800">Upcoming Member Exclusive Events</h2>
+        <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12 mb-10">
+          {upcomingEvents.length === 0 ? (
+            <div class="border-4 border-[#D9314A] rounded-lg p-6 bg-gray-100 text-center text-lg text-gray-800">
+              More events coming soon! 
+            </div>
+          ) : (
+            upcomingEvents.map(event => (
+              event.data.access === "Member Exclusive" && (
+                <div class="group border-4 border-[#000000] bg-[#D9314A] rounded-lg p-2">
+                  <div class="relative w-full aspect-square">
+                    <img src={event.data.image?.src || '/default-event-image.png'}
+                         alt={event.data.title}
+                         class="w-full rounded bg-white object-cover object-center aspect-square" />
+                    <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
+                      <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
+                      <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+                      <p class="w-full">Location:<br/>{event.data.location}</p>
+                      <p class="w-full">Description:<br/>{event.data.description}</p>
+                    </div>
+                  </div>
+                  <div class="mt-4 text-center px-4">
+                    {event.data.url ? (
+                      <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-white hover:underline">
+                        {event.data.title}
+                      </a>
+                    ) : (
+                      <h3 class="text-lg text-white">{event.data.title}</h3>
+                    )}
+                    <p class="text-sm text-white">{new Date(event.data.date).toLocaleDateString()}</p>
+                    <p class="text-sm text-white">{event.data.access}</p>
+                  </div>
+                </div>
+              )
+            ))
+          )}
+        </div>
       </section>
     </main>
   </Container>

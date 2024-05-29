@@ -33,7 +33,7 @@ pastEvents = pastEvents.sort((a, b) => {
       <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
         {upcomingEvents.length === 0 ? (
           <div class="border-4 border-[#D9314A] rounded-lg p-6 bg-gray-100 text-center text-lg text-gray-800">
-            More events coming soon! 
+            More events coming soon!
           </div>
         ) : (
           upcomingEvents.map(event => (
@@ -50,7 +50,7 @@ pastEvents = pastEvents.sort((a, b) => {
                       <p class="w-full">Location:<br/>{event.data.location}</p>
                     </>
                   ) : (
-                    <p class="text-red-500">Log in or become a Member to view exclusive event details!</p>
+                    <p class="text-red-500">Log in to view member exclusive event details!</p>
                   )}
                   <p class="w-full">Description:<br/>{event.data.description}</p>
                 </div>
@@ -84,14 +84,8 @@ pastEvents = pastEvents.sort((a, b) => {
                    class="w-full rounded bg-white object-cover object-center aspect-square" />
               <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
                 <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
-                {event.data.access !== "Member Exclusive" ? (
-                  <>
-                    <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
-                    <p class="w-full">Location:<br/>{event.data.location}</p>
-                  </>
-                ) : (
-                  <p class="text-red-500">Log in or become a Member to view exclusive event details!</p>
-                )}
+                <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
+                <p class="w-full">Location:<br/>{event.data.location}</p>
                 <p class="w-full">Description:<br/>{event.data.description}</p>
               </div>
             </div>

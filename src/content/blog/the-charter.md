@@ -3,7 +3,7 @@ draft: false
 title: "Our Founding Bylaws - The Space Charter"
 snippet: "Our Founding Bylaws - The Space Charter."
 image: {
-    src: "/assets/spacecharter.svg",
+    src: "/assets/blog/TheSpaceBylaws.png",
     alt: "The Space Charter and Bylaws"
 }
 publishDate: "2024-04-10 21:00"
