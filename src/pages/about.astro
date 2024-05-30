@@ -2,19 +2,55 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+
+// List of volunteer images, their alt text, and descriptions
+const volunteers = [
+  { src: "/images/volunteer1.jpg", alt: "Volunteer 1", description: "Role/Contribution" },
+  { src: "/images/volunteer2.jpg", alt: "Volunteer 2", description: "Role/Contribution" },
+  { src: "/images/volunteer3.jpg", alt: "Volunteer 3", description: "Role/Contribution" },
+  // Add more volunteers as needed
+];
 ---
+
+<style>
+  .custom-gradient {
+    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+  }
+  .white-svg {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+  .volunteer-container img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  th {
+    background-color: #333;
+    color: #fff;
+  }
+  .unique-table .green { background-color: #4CAF50; }
+  .unique-table .yellow { background-color: #FFEB3B; }
+  .unique-table .red { background-color: #F44336; }
+</style>
 
 <Layout title="About Us">
   <Container>
     <Sectionhead>
       <Fragment slot="title">About Us</Fragment>
-      <Fragment slot="desc">Learn more about The Space and our commitment to making a difference.</Fragment>
+      <Fragment slot="desc">Who we are. Our mission. And what we bring to the community.</Fragment>
     </Sectionhead>
 
     <div class="space-y-16">
-      <!-- About The Space -->
+      <!-- Logo Image and Description of our Non-Profit Org -->
       <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
-        <img src="/images/about-us.jpg" alt="About The Space" class="w-full lg:w-1/2 rounded-lg shadow-md" />
+        <img src="/images/logo.png" alt="Logo Image" class="w-full lg:w-1/2 rounded-lg shadow-md" />
         <div class="lg:w-1/2">
           <h2 class="text-3xl font-bold text-gray-800">About The Space</h2>
           <p class="mt-4 text-lg text-gray-600">
@@ -31,8 +67,8 @@ import Sectionhead from "@components/sectionhead.astro";
         </p>
       </section>
 
-      <!-- Values -->
-      <section class="grid md:grid-cols-2 gap-8">
+      <!-- Values and Image -->
+      <section class="grid md:grid-cols-2 gap-8 items-center">
         <div>
           <h2 class="text-3xl font-bold text-gray-800">Values</h2>
           <p class="mt-4 text-lg text-gray-600">
@@ -46,90 +82,98 @@ import Sectionhead from "@components/sectionhead.astro";
         </div>
         <img src="/images/values.jpg" alt="Our Values" class="w-full rounded-lg shadow-md" />
       </section>
-
-      <!-- History -->
-      <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
-        <img src="/images/history.jpg" alt="History" class="w-full lg:w-1/2 rounded-lg shadow-md" />
-        <div class="lg:w-1/2">
-          <h2 class="text-3xl font-bold text-gray-800">History</h2>
-          <p class="mt-4 text-lg text-gray-600">
-            Founded in [Year], The Space began as [brief origin story]. Over the years, we have [highlight key milestones and achievements].
-          </p>
-        </div>
-      </section>
-
-      <!-- Unique Table -->
-      <section>
-        <h2 class="text-3xl font-bold text-gray-800 text-center">The Space is Unique!</h2>
-        <div class="overflow-auto mt-8">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">#</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Name</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Social Hub</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Education</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Defined Mission</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Public Events</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Coworking</th>
-                <th class="border border-gray-200 p-2 bg-gray-800 text-white">Member Owned</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">1</td>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">The Space</td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-              </tr>
-              <tr>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">2</td>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Other Bitcoin Hubs</td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-              </tr>
-              <tr>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">3</td>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Traditional Social Clubs</td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-              </tr>
-              <tr>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">4</td>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Value Aligned Groups</td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-yellow-500"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-              </tr>
-              <tr>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">5</td>
-                <td class="border border-gray-200 p-2 bg-gray-200 text-gray-900">Coworking Centers</td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-                <td class="border border-gray-200 p-2 bg-green-500"></td>
-                <td class="border border-gray-200 p-2 bg-red-500"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
     </div>
   </Container>
+
+  <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here -->
+  <div class="custom-gradient py-12 mt-24 mb-0">
+    <!-- Our Unique Offering -->
+    <section class="text-center py-10">
+      <h2 class="text-3xl font-bold text-gray-800">The Space is Unique</h2>
+      <div class="overflow-auto mt-8">
+        <table class="unique-table mx-auto">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Social Hub</th>
+              <th>Education</th>
+              <th>Defined Mission</th>
+              <th>Public Events</th>
+              <th>Coworking</th>
+              <th>Member Run</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The Space</td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+            </tr>
+            <tr>
+              <td>Bitcoin Citadels</td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="yellow"></td>
+              <td class="red"></td>
+            </tr>
+            <tr>
+              <td>Social Clubs</td>
+              <td class="green"></td>
+              <td class="orange"></td>
+              <td class="red"></td>
+              <td class="yellow"></td>
+              <td class="orange"></td>
+              <td class="yellow"></td>
+            </tr>
+            <tr>
+              <td>Value Aligned Orgs</td>
+              <td class="orange"></td>
+              <td class="green"></td>
+              <td class="green"></td>
+              <td class="orange"></td>
+              <td class="red"></td>
+              <td class="red"></td>
+            </tr>
+            <tr>
+              <td>Coworking Spots</td>
+              <td class="red"></td>
+              <td class="red"></td>
+              <td class="red"></td>
+              <td class="orange"></td>
+              <td class="green"></td>
+              <td class="red"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- How We Got Here -->
+    <section class="text-center py-10">
+      <h2 class="text-3xl font-bold text-gray-800">How We Got Here</h2>
+      <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+        Our journey started in [Year] with a vision to [initial vision]. Since then, we've [key milestones and achievements].
+      </p>
+    </section>
+  </div>
+
+  <!-- Volunteers -->
+  <div class="bg-black py-12 mt-24 mb-0">
+    <h2 class="text-center text-slate-100">Our Volunteers</h2>
+    <p class="text-center text-slate-100">We are grateful for the efforts of our dedicated volunteers who have helped make our organization a reality.</p>
+    <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 mb-10 flex-wrap volunteer-container">
+      {volunteers.map(volunteer => (
+        <div class="block text-center">
+          <img src={volunteer.src} alt={volunteer.alt} class="h-12 w-12 md:h-20 md:w-20 object-contain rounded-full border-2 border-white shadow-md" />
+          <p class="text-white mt-2">{volunteer.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
 </Layout>

@@ -1,7 +1,7 @@
 ---
 draft: false
-title: "Our Founding Bylaws - The Space Charter"
-snippet: "Our Founding Bylaws - The Space Charter."
+title: "Our Founding Bylaws"
+snippet: "Our Founding Bylaws"
 image: {
     src: "/assets/blog/TheSpaceBylaws.png",
     alt: "The Space Charter and Bylaws"
