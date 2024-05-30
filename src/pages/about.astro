@@ -22,22 +22,65 @@ const volunteers = [
   .volunteer-container img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
+  .table-wrapper {
+    overflow: hidden;
+    border-radius: 15px;
+  }
   table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-radius: 15px;
+    overflow: hidden;
   }
   th, td {
-    border: 1px solid #ccc;
+    border: 2px solid #000000;
     padding: 10px;
     text-align: center;
+    background-color: #131313; /* Default black background */
+    color: #fff; /* Default white text */
+    width: 14.2857%; /* Set equal width for all columns (100% / 7 columns) */
+    position: relative; /* For positioning circles */
   }
   th {
-    background-color: #333;
-    color: #fff;
+    background-color: #131313;
   }
-  .unique-table .green { background-color: #4CAF50; }
-  .unique-table .yellow { background-color: #FFEB3B; }
-  .unique-table .red { background-color: #F44336; }
+  .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .unique-table .green .circle { background-color: #2eba33; }
+  .unique-table .yellow .circle { background-color: #ffe926; }
+  .unique-table .orange .circle { background-color: #FF9800; }
+  .unique-table .red .circle { background-color: #eb2415; }
+  .unique-table tbody tr {
+    height: 70px; /* Set a fixed height for table rows */
+  }
+
+  @media (max-width: 768px) {
+    table, th, td {
+      font-size: 12px; /* Adjust font size for smaller screens */
+    }
+    .table-wrapper {
+      overflow-x: auto; /* Enable horizontal scrolling */
+    }
+  }
+
+  @media (max-width: 480px) {
+    th, td {
+      padding: 5px; /* Adjust padding for very small screens */
+    }
+    .circle {
+      width: 15px;
+      height: 15px;
+    }
+  }
 </style>
 
 <Layout title="About Us">
@@ -86,11 +129,11 @@ const volunteers = [
   </Container>
 
   <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here -->
-  <div class="custom-gradient py-12 mt-24 mb-0">
+  <div class="custom-gradient py-12 mt-20 mb-0">
     <!-- Our Unique Offering -->
-    <section class="text-center py-10">
-      <h2 class="text-3xl font-bold text-gray-800">The Space is Unique</h2>
-      <div class="overflow-auto mt-8">
+    <section class="text-center py-10 px-60">
+      <h2 class="mt-20 text-3xl font-bold text-white">The Space is Unique</h2>
+      <div class="overflow-auto mt-8 px-8 table-wrapper">
         <table class="unique-table mx-auto">
           <thead>
             <tr>
@@ -105,69 +148,70 @@ const volunteers = [
           </thead>
           <tbody>
             <tr>
-              <td>The Space</td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
+              <th>The Space</th>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
             </tr>
             <tr>
-              <td>Bitcoin Citadels</td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="yellow"></td>
-              <td class="red"></td>
+              <th>Bitcoin Citadels</th>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="yellow"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
             </tr>
             <tr>
-              <td>Social Clubs</td>
-              <td class="green"></td>
-              <td class="orange"></td>
-              <td class="red"></td>
-              <td class="yellow"></td>
-              <td class="orange"></td>
-              <td class="yellow"></td>
+              <th>Social Clubs</th>
+              <td class="green"><div class="circle"></div></td>
+              <td class="orange"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
+              <td class="yellow"><div class="circle"></div></td>
+              <td class="orange"><div class="circle"></div></td>
+              <td class="yellow"><div class="circle"></div></td>
             </tr>
             <tr>
-              <td>Value Aligned Orgs</td>
-              <td class="orange"></td>
-              <td class="green"></td>
-              <td class="green"></td>
-              <td class="orange"></td>
-              <td class="red"></td>
-              <td class="red"></td>
+              <th>Value Aligned Orgs</th>
+              <td class="orange"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="orange"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
             </tr>
             <tr>
-              <td>Coworking Spots</td>
-              <td class="red"></td>
-              <td class="red"></td>
-              <td class="red"></td>
-              <td class="orange"></td>
-              <td class="green"></td>
-              <td class="red"></td>
+              <th>Coworking Spots</th>
+              <td class="red"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
+              <td class="orange"><div class="circle"></div></td>
+              <td class="green"><div class="circle"></div></td>
+              <td class="red"><div class="circle"></div></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
+
     <!-- How We Got Here -->
-    <section class="text-center py-10">
-      <h2 class="text-3xl font-bold text-gray-800">How We Got Here</h2>
-      <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+    <section class="text-center py-10 mt-20 mb-20 px-4">
+      <h2 class="text-3xl font-bold text-white">How We Got Here</h2>
+      <p class="mt-4 text-lg text-gray-200 mx-auto max-w-2xl">
         Our journey started in [Year] with a vision to [initial vision]. Since then, we've [key milestones and achievements].
       </p>
     </section>
   </div>
 
   <!-- Volunteers -->
-  <div class="bg-black py-12 mt-24 mb-0">
-    <h2 class="text-center text-slate-100">Our Volunteers</h2>
+  <div class="bg-black py-12 mb-0">
+    <h2 class="mt-10 text-center text-slate-100">Founders & Volunteers</h2>
     <p class="text-center text-slate-100">We are grateful for the efforts of our dedicated volunteers who have helped make our organization a reality.</p>
-    <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 mb-10 flex-wrap volunteer-container">
+    <div class="flex gap-8 md:gap-20 items-center justify-center mt-20 mb-10 flex-wrap volunteer-container">
       {volunteers.map(volunteer => (
         <div class="block text-center">
           <img src={volunteer.src} alt={volunteer.alt} class="h-12 w-12 md:h-20 md:w-20 object-contain rounded-full border-2 border-white shadow-md" />
