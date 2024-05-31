@@ -1,15 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// List of volunteer images, their alt text, and descriptions
-const volunteers = [
-  { src: "/images/volunteer1.jpg", alt: "Volunteer 1", description: "Role/Contribution" },
-  { src: "/images/volunteer2.jpg", alt: "Volunteer 2", description: "Role/Contribution" },
-  { src: "/images/volunteer3.jpg", alt: "Volunteer 3", description: "Role/Contribution" },
-  // Add more volunteers as needed
-];
+// Fetch all volunteer files dynamically
+const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
+  return !data.draft && new Date(data.publishDate) < new Date();
+});
 ---
 
 <style>
@@ -19,11 +17,37 @@ const volunteers = [
   .white-svg {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
+  .volunteer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 0 40px;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .volunteer-container .volunteer {
+    text-align: center;
+  }
   .volunteer-container img {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+  .volunteer-section {
+    padding-top: 0;
+    margin-top: -20px;
+  }
+  .volunteer-section h2, .volunteer-section p {
+    margin-bottom: 20px;
   }
   .table-wrapper {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     border-radius: 15px;
   }
   table {
@@ -33,6 +57,7 @@ const volunteers = [
     table-layout: fixed;
     border-radius: 15px;
     overflow: hidden;
+    background-color: #131313;
   }
   th, td {
     border: 2px solid #000000;
@@ -63,22 +88,29 @@ const volunteers = [
     height: 70px; /* Set a fixed height for table rows */
   }
 
-  @media (max-width: 768px) {
-    table, th, td {
-      font-size: 12px; /* Adjust font size for smaller screens */
-    }
-    .table-wrapper {
-      overflow-x: auto; /* Enable horizontal scrolling */
+  @media (max-width: 1024px) {
+    .volunteer-container {
+      padding: 0 20px;
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    .volunteer-container {
+      padding: 0 10px;
+      gap: 10px;
+    }
     th, td {
-      padding: 5px; /* Adjust padding for very small screens */
+      padding: 5px;
     }
     .circle {
       width: 15px;
       height: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .volunteer-container {
+      padding: 0 5px;
     }
   }
 </style>
@@ -115,12 +147,18 @@ const volunteers = [
         <div>
           <h2 class="text-3xl font-bold text-gray-800">Values</h2>
           <p class="mt-4 text-lg text-gray-600">
-            At The Space, we uphold values that include:
+            What we Stand For
           </p>
           <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
-            <li>Value 1 - [Description]</li>
-            <li>Value 2 - [Description]</li>
-            <li>Value 3 - [Description]</li>
+            <li>Individualism</li>
+            <li>Voluntary Association</li>
+            <li>Privacy</li>
+            <li>Software is Speech</li>
+            <li>Proof-of-Work</li>
+            <li>Meritocracy</li>
+            <li>Curiosity</li>
+            <li>Courage</li>
+            <li>Authenticity</li>
           </ul>
         </div>
         <img src="/images/values.jpg" alt="Our Values" class="w-full rounded-lg shadow-md" />
@@ -128,11 +166,11 @@ const volunteers = [
     </div>
   </Container>
 
-  <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here -->
-  <div class="custom-gradient py-12 mt-20 mb-0">
+  <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here Sections-->
+  <div class="custom-gradient py-12 mt-20">
     <!-- Our Unique Offering -->
     <section class="text-center py-10 px-60">
-      <h2 class="mt-20 text-3xl font-bold text-white">The Space is Unique</h2>
+      <h2 class="mt-10 text-3xl font-bold text-white">The Space is Unique</h2>
       <div class="overflow-auto mt-8 px-8 table-wrapper">
         <table class="unique-table mx-auto">
           <thead>
@@ -197,25 +235,25 @@ const volunteers = [
       </div>
     </section>
 
-
     <!-- How We Got Here -->
-    <section class="text-center py-10 mt-20 mb-20 px-4">
+    <section class="text-center py-10 mt-10 mb-10 px-4">
       <h2 class="text-3xl font-bold text-white">How We Got Here</h2>
       <p class="mt-4 text-lg text-gray-200 mx-auto max-w-2xl">
-        Our journey started in [Year] with a vision to [initial vision]. Since then, we've [key milestones and achievements].
+        The Space started as an idea proposed in the fall of 2023 at the local Denver BitDevs chapter.
+        Shortly after, we outlined a vision, and brought everyone together who wanted to help make it a reality.
       </p>
     </section>
   </div>
 
   <!-- Volunteers -->
-  <div class="bg-black py-12 mb-0">
-    <h2 class="mt-10 text-center text-slate-100">Founders & Volunteers</h2>
-    <p class="text-center text-slate-100">We are grateful for the efforts of our dedicated volunteers who have helped make our organization a reality.</p>
-    <div class="flex gap-8 md:gap-20 items-center justify-center mt-20 mb-10 flex-wrap volunteer-container">
-      {volunteers.map(volunteer => (
-        <div class="block text-center">
-          <img src={volunteer.src} alt={volunteer.alt} class="h-12 w-12 md:h-20 md:w-20 object-contain rounded-full border-2 border-white shadow-md" />
-          <p class="text-white mt-2">{volunteer.description}</p>
+  <div class="volunteer-section text-center bg-black py-10">
+    <h2 class="mt-20 text-3xl font-bold text-white">Founding Volunteers</h2>
+    <p class="mt-4 text-center text-gray-200">Cheers to all the amazing bitcoiners across the Rocky Mountain region who helped bring this together.</p>
+    <div class="mt-20 volunteer-container">
+      {publishedVolunteers.map((volunteerEntry) => (
+        <div class="volunteer">
+          <img src={volunteerEntry.data.avatar.src} alt={volunteerEntry.data.avatar.alt} class="h-24 w-24 object-cover rounded-full border-2 border-white shadow-md" />
+          <p class="text-white mt-2">{volunteerEntry.data.name}</p>
         </div>
       ))}
     </div>
