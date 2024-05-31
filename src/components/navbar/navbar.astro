@@ -1,259 +1,105 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
+import Link from "@components/ui/link.astro";
+import Dropdown from "./dropdown.astro";
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
-// Fetch all volunteer files dynamically
-const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
-  return !data.draft && new Date(data.publishDate) < new Date();
-});
+const menuitems = [
+  {
+    title: "About",
+    path: "/about",
+    badge: "",
+    children: [
+      { title: "About", path: "/about" },
+      { title: "Board", path: "/board" },
+      { title: "Sponsors", path: "/sponsors" },
+      { title: "Venue", path: "/venue" },
+    ],
+  },
+  {
+    title: "Content",
+    path: "/content",
+    badge: "",
+    children: [
+      { title: "Blog", path: "/blog" },
+      //{ title: "Video", path: "/video" },
+      //{ title: "Podcast", path: "/podcast" },
+      //{ title: "Memes", path: "/memes" },
+    ],
+  },
+  {
+    title: "Events",
+    path: "/events",
+  },
+  {
+    title: "Documentation",
+    path: "/documentation",
+  },
+  {
+    title: "Membership",
+    path: "/pricing",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+  },
+];
 ---
 
-<style>
-  .custom-gradient {
-    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
-  }
-  .white-svg {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  }
-  .volunteer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 40px;
-  }
-  .volunteer-container .volunteer {
-    display: inline-block;
-    text-align: center;
-  }
-  .volunteer-container img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-  }
-  .volunteer-section {
-    padding-top: 0;
-    margin-top: -20px;
-  }
-  .volunteer-section h2, .volunteer-section p {
-    margin-bottom: 20px;
-  }
-  .table-wrapper {
-    overflow-x: auto;
-    overflow-y: hidden;
-    border-radius: 15px;
-  }
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    table-layout: fixed;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #131313;
-  }
-  th, td {
-    border: 2px solid #000000;
-    padding: 10px;
-    text-align: center;
-    background-color: #131313; /* Default black background */
-    color: #fff; /* Default white text */
-    width: 14.2857%; /* Set equal width for all columns (100% / 7 columns) */
-    position: relative; /* For positioning circles */
-  }
-  th {
-    background-color: #131313;
-  }
-  .circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .unique-table .green .circle { background-color: #2eba33; }
-  .unique-table .yellow .circle { background-color: #ffe926; }
-  .unique-table .orange .circle { background-color: #FF9800; }
-  .unique-table .red .circle { background-color: #eb2415; }
-  .unique-table tbody tr {
-    height: 70px; /* Set a fixed height for table rows */
-  }
-
-  @media (max-width: 1024px) {
-    .volunteer-container {
-      padding: 0 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .volunteer-container {
-      padding: 0 10px;
-      gap: 10px;
-    }
-    th, td {
-      padding: 5px;
-    }
-    .circle {
-      width: 15px;
-      height: 15px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .volunteer-container {
-      padding: 0 5px;
-    }
-  }
-</style>
-
-<Layout title="About Us">
-  <Container>
-    <Sectionhead>
-      <Fragment slot="title">About Us</Fragment>
-      <Fragment slot="desc">Who we are. Our mission. And what we bring to the community.</Fragment>
-    </Sectionhead>
-
-    <div class="space-y-16">
-      <!-- Logo Image and Description of our Non-Profit Org -->
-      <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
-        <img src="/images/logo.png" alt="Logo Image" class="w-full lg:w-1/2 rounded-lg shadow-md" />
-        <div class="lg:w-1/2">
-          <h2 class="text-3xl font-bold text-gray-800">About The Space</h2>
-          <p class="mt-4 text-lg text-gray-600">
-            The Space is a nonprofit organization dedicated to [brief description of your main focus]. Our mission is to [mission statement]. We are committed to [highlight a key commitment or goal].
-          </p>
+<Container>
+  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+    <Astronav>
+      <div class="flex w-full lg:w-auto items-center justify-between">
+        <a href="/" class="text-lg"
+          ><span class="text-slate-500">The </span><span
+            class="font-bold text-black-800">Space</span
+          >
+        </a>
+        <div class="block lg:hidden">
+          <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
-      </section>
-
-      <!-- Our Vision -->
-      <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
-        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
-          Our vision at The Space is to [vision statement]. We strive to [describe the future state or goal you are working towards].
-        </p>
-      </section>
-
-      <!-- Values and Image -->
-      <section class="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800">Values</h2>
-          <p class="mt-4 text-lg text-gray-600">
-            What we Stand For
-          </p>
-          <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
-            <li>Individualism</li>
-            <li>Voluntary Association</li>
-            <li>Privacy</li>
-            <li>Software is Speech</li>
-            <li>Proof-of-Work</li>
-            <li>Meritocracy</li>
-            <li>Curiosity</li>
-            <li>Courage</li>
-            <li>Authenticity</li>
-          </ul>
-        </div>
-        <img src="/images/values.jpg" alt="Our Values" class="w-full rounded-lg shadow-md" />
-      </section>
-    </div>
-  </Container>
-
-  <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here Sections-->
-  <div class="custom-gradient py-12 mt-20">
-    <!-- Our Unique Offering -->
-    <section class="text-center py-10 px-60">
-      <h2 class="mt-10 text-3xl font-bold text-white">The Space is Unique</h2>
-      <div class="overflow-auto mt-8 px-8 table-wrapper">
-        <table class="unique-table mx-auto">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Social Hub</th>
-              <th>Education</th>
-              <th>Defined Mission</th>
-              <th>Public Events</th>
-              <th>Coworking</th>
-              <th>Member Run</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>The Space</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-            </tr>
-            <tr>
-              <th>Bitcoin Citadels</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-            </tr>
-            <tr>
-              <th>Social Clubs</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
-            </tr>
-            <tr>
-              <th>Value Aligned Orgs</th>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-            </tr>
-            <tr>
-              <th>Coworking Spots</th>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-    </section>
+      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+        <ul class="flex flex-col lg:flex-row lg:gap-3">
+          {
+            menuitems.map((item, index) => (
+              <>
+                {item.children && (
+                  <Dropdown
+                    title={item.title}
+                    children={item.children}
+                    lastItem={index === menuitems.length - 1}
+                  />
+                )}
 
-    <!-- How We Got Here -->
-    <section class="text-center py-10 mt-10 mb-10 px-4">
-      <h2 class="text-3xl font-bold text-white">How We Got Here</h2>
-      <p class="mt-4 text-lg text-gray-200 mx-auto max-w-2xl">
-        The Space started as an idea proposed in the fall of 2023 at the local Denver BitDevs chapter.
-        Shortly after, we outlined a vision, and brought everyone together who wanted to help make it a reality.
-      </p>
-    </section>
-  </div>
-
-  <!-- Volunteers -->
-  <div class="volunteer-section text-center bg-black py-10">
-    <h2 class="mt-20 text-3xl font-bold text-white">Founding Volunteers</h2>
-    <p class="mt-4 text-center text-gray-200">Cheers to all the amazing bitcoiners across the Rocky Mountain region who helped bring this together.</p>
-    <div class="mt-20 volunteer-container">
-      {publishedVolunteers.map((volunteerEntry) => (
-        <div class="volunteer">
-          <img src={volunteerEntry.data.avatar.src} alt={volunteerEntry.data.avatar.alt} class="h-24 w-24 object-cover rounded-full border-2 border-white shadow-md" />
-          <p class="text-white mt-2">{volunteerEntry.data.name}</p>
+                {!item.children && (
+                  <li>
+                    <a
+                      href={item.path}
+                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"
+                    >
+                      <span> {item.title}</span>
+                      {item.badge && (
+                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
+                          New
+                        </span>
+                      )}
+                    </a>
+                  </li>
+                )}
+              </>
+            ))
+          }
+        </ul>
+        <div class="lg:hidden flex items-center mt-3 gap-4">
+          <Link href="/signin" size="md" block>Sign In</Link>
         </div>
-      ))}
+      </MenuItems>
+    </Astronav>
+    <div>
+      <div class="hidden lg:flex items-center gap-4">
+        <Link href="/signin" size="md">Sign In</Link>
+      </div>
     </div>
-  </div>
-</Layout>
+  </header>
+</Container>

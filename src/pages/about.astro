@@ -18,16 +18,16 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
   .volunteer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 20px;
-    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    max-width: 100%;
-    margin: 0 auto;
+    gap: 20px;
+    padding: 0 20px; /* Use smaller padding */
+    max-width: 1200px; /* Set a max width */
+    margin: 0 auto; /* Center the container */
   }
   .volunteer-container .volunteer {
+    display: inline-block;
     text-align: center;
   }
   .volunteer-container img {
@@ -90,14 +90,16 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
 
   @media (max-width: 1024px) {
     .volunteer-container {
-      padding: 0 20px;
+      padding: 0 20px; /* Adjust padding for medium screens */
+      max-width: 100%; /* Ensure it doesn't overflow */
     }
   }
 
   @media (max-width: 768px) {
     .volunteer-container {
-      padding: 0 10px;
+      padding: 0 15px; /* Adjust padding for small screens */
       gap: 10px;
+      max-width: 100%; /* Ensure it doesn't overflow */
     }
     th, td {
       padding: 5px;
@@ -110,7 +112,8 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
 
   @media (max-width: 480px) {
     .volunteer-container {
-      padding: 0 5px;
+      padding: 0 10px; /* Adjust padding for extra small screens */
+      max-width: 100%; /* Ensure it doesn't overflow */
     }
   }
 </style>
