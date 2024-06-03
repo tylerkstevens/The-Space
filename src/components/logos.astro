@@ -6,10 +6,13 @@ import { Icon } from "astro-icon/components";
 const sponsors = [
   { src: "/assets/sponsors/fedimint.png", alt: "Fedimint", url: "https://fedimint.org" },
   { src: "/assets/sponsors/compassmining_logo.jpeg", alt: "Compass", url: "https://compassmining.io" },
-  { src: "/assets/sponsors/bitcoin.svg", alt: "Sponsor Us", format: "svg" },
-  { src: "/assets/sponsors/bitcoin.svg", alt: "Sponsor Us", format: "svg" },
-  { src: "/assets/sponsors/bitcoin.svg", alt: "Sponsor Us", format: "svg" },
-  { src: "/assets/sponsors/bitcoin.svg", alt: "Sponsor Us", format: "svg" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
+
   // Add more sponsors as needed
 ];
 ---
@@ -21,11 +24,17 @@ const sponsors = [
   .white-svg {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+  }
 </style>
 
 <div class="mt-24 mb-0 custom-gradient py-12">
-  <h2 class="text-center text-slate-100">Supported by bitcoin organizations and believers. Help us spread the word.</h2>
-  <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 mb-10 flex-wrap">
+  <h2 class="text-center text-slate-100">Supported by bitcoin believers and organizations. Help us spread the word.</h2>
+  <div class="sponsors-grid mt-10 mb-2">
     {sponsors.map(sponsor => (
       <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class="block">
         {sponsor.format === 'svg' ? (

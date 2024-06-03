@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -8,9 +9,62 @@ import Sectionhead from "@components/sectionhead.astro";
 const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
   return !data.draft && new Date(data.publishDate) < new Date();
 });
+
+// Values data
+const values = [
+  {
+    title: "Individualism",
+    description: "We embrace the uniqueness of each individual.",
+    icon: "bx:bxs-user",
+  },
+  {
+    title: "Voluntary Association",
+    description: "Participation by choice, not coercion.",
+    icon: "bx:bxs-group",
+  },
+  {
+    title: "Privacy",
+    description: "Privacy is a fundamental right essential for freedom.",
+    icon: "simple-icons:privateinternetaccess",
+  },
+  {
+    title: "Software is Speech",
+    description: "Champion free speech and FOSS as the foundation of a free society.",
+    icon: "bx:code",
+  },
+  {
+    title: "Proof-of-Work",
+    description: "We reward and support actions that improve the human condition.",
+    icon: "uil:wrench",
+  },
+  {
+    title: "Meritocracy",
+    description: "Recognition based on individual effort and achievement.",
+    icon: "bx:bxs-trophy",
+  },
+  {
+    title: "Curiosity",
+    description: "The innate desire for knowledge forwards the human condition.",
+    icon: "bx:question-mark",
+  },
+  {
+    title: "Courage",
+    description: "We promote actions driven by courage, not fear, to achieve positive outcomes.",
+    icon: "bx:bxs-microphone",
+  },
+  {
+    title: "Authenticity",
+    description: "We value sincerity and originality in our actions.",
+    icon: "bx:bxl-discourse",
+  },
+];
 ---
 
 <style>
+  body, html {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
   .custom-gradient {
     background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
   }
@@ -48,22 +102,23 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
   .table-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
-    border-radius: 15px;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    background-color: #131313; /* Ensure the wrapper has the desired background */
+    padding: 1rem;
   }
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #131313;
+    background-color: transparent; /* Make the table background transparent to show wrapper background */
   }
   th, td {
     border: 2px solid #000000;
     padding: 10px;
     text-align: center;
-    background-color: #131313; /* Default black background */
+    background-color: #131313; /* Ensure cells have the same background */
     color: #fff; /* Default white text */
     width: 14.2857%; /* Set equal width for all columns (100% / 7 columns) */
     position: relative; /* For positioning circles */
@@ -71,21 +126,27 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
   th {
     background-color: #131313;
   }
-  .circle {
+  .checkmark::before {
+    content: "✓";
+    color: #b1b1b1;
+    font-size: 20px;
+  }
+  .dash::before {
+    content: "—";
+    color: #878787;
+    font-size: 20px;
+  }
+  .cross::before {
+    content: "✗";
+    color: #505050;
+    font-size: 20px;
+  }
+  .custom-logo {
+    display: inline-block;
     width: 20px;
     height: 20px;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .unique-table .green .circle { background-color: #2eba33; }
-  .unique-table .yellow .circle { background-color: #ffe926; }
-  .unique-table .orange .circle { background-color: #FF9800; }
-  .unique-table .red .circle { background-color: #eb2415; }
-  .unique-table tbody tr {
-    height: 70px; /* Set a fixed height for table rows */
+    background: url('/assets/branding/The Space_Logos_V2-13.png') no-repeat center center;
+    background-size: contain;
   }
 
   @media (max-width: 1024px) {
@@ -104,9 +165,8 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
     th, td {
       padding: 5px;
     }
-    .circle {
-      width: 15px;
-      height: 15px;
+    .checkmark::before, .dash::before, .cross::before {
+      font-size: 15px;
     }
   }
 
@@ -139,32 +199,36 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
 
       <!-- Our Vision -->
       <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
-        <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+        <h2 class="text-3xl font-bold text-gray-800">Vision</h2>
         <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
-          Our vision at The Space is to [vision statement]. We strive to [describe the future state or goal you are working towards].
+          We envision The Space as the leading hub for education, collaboration, networking, and creative development within the Bitcoin ecosystem.
+          Our goal is to unite a physical community of exceptional individuals and organizations that share our core values, emphasizing education, freedom, and local economy Bitcoin adoption.
+        </p>
+        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
+          We aspire for our open-source documentation and resources to empower other local communities to replicate The Space model, establishing bitcoin citadels worldwide.
+          No matter the city, we foresee arriving at The Space and knowing you're in the right spot.
         </p>
       </section>
 
-      <!-- Values and Image -->
-      <section class="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800">Values</h2>
-          <p class="mt-4 text-lg text-gray-600">
-            What we Stand For
-          </p>
-          <ul class="list-disc ml-5 mt-4 text-lg text-gray-600">
-            <li>Individualism</li>
-            <li>Voluntary Association</li>
-            <li>Privacy</li>
-            <li>Software is Speech</li>
-            <li>Proof-of-Work</li>
-            <li>Meritocracy</li>
-            <li>Curiosity</li>
-            <li>Courage</li>
-            <li>Authenticity</li>
-          </ul>
+      <!-- Values -->
+      <section class="mt-16">
+        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">Our Values</h2>
+        <p class="text-lg mt-4 text-slate-600">What we stand for</p>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+          {
+            values.map((item) => (
+              <div class="flex gap-4 items-start">
+                <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+                  <Icon class="text-white" name={item.icon} />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-lg">{item.title}</h3>
+                  <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
         </div>
-        <img src="/images/values.jpg" alt="Our Values" class="w-full rounded-lg shadow-md" />
       </section>
     </div>
   </Container>
@@ -172,85 +236,102 @@ const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
   <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here Sections-->
   <div class="custom-gradient py-12 mt-20">
     <!-- Our Unique Offering -->
-    <section class="text-center py-10 px-60">
-      <h2 class="mt-10 text-3xl font-bold text-white">The Space is Unique</h2>
+    <section class="text py-10 text-center lg:px-60 md:px-40 sm:px-4">
+      <h2 class="mt-0 mb-10 text-4xl text-center font-bold text-white">Something Unique</h2>
       <div class="overflow-auto mt-8 px-8 table-wrapper">
         <table class="unique-table mx-auto">
           <thead>
             <tr>
               <th></th>
-              <th>Social Hub</th>
-              <th>Education</th>
-              <th>Defined Mission</th>
-              <th>Public Events</th>
-              <th>Coworking</th>
-              <th>Member Run</th>
+              <th>The Space</th>
+              <td>Bitcoin Hubs</td>
+              <td>Aligned Orgs</td>
+              <td>Social Clubs</td>
+              <td>Coworking Spots</td>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th>The Space</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
+              <td>Education</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="checkmark"></td>
+              <td class="checkmark"></td>
+              <td class="cross"></td>
+              <td class="cross"></td>
             </tr>
             <tr>
-              <th>Bitcoin Citadels</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
+              <td>Social Hub</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="checkmark"></td>
+              <td class="checkmark"></td>
+              <td class="checkmark"></td>
+              <td class="cross"></td>
             </tr>
             <tr>
-              <th>Social Clubs</th>
-              <td class="green"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="yellow"><div class="circle"></div></td>
+              <td>Defined Mission</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="checkmark"></td>
+              <td class="checkmark"></td>
+              <td class="cross"></td>
+              <td class="cross"></td>
             </tr>
             <tr>
-              <th>Value Aligned Orgs</th>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
+              <td>Events</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="checkmark"></td>
+              <td class="dash"></td>
+              <td class="dash"></td>
+              <td class="dash"></td>
             </tr>
             <tr>
-              <th>Coworking Spots</th>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
-              <td class="orange"><div class="circle"></div></td>
-              <td class="green"><div class="circle"></div></td>
-              <td class="red"><div class="circle"></div></td>
+              <td>Coworking</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="dash"></td>
+              <td class="cross"></td>
+              <td class="cross"></td>
+              <td class="checkmark"></td>
+            </tr>
+            <tr>
+              <td>Member Run</td>
+              <td><span class="custom-logo"></span></td>
+              <td class="cross"></td>
+              <td class="cross"></td>
+              <td class="dash"></td>
+              <td class="cross"></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- How We Got Here -->
-    <section class="text-center py-10 mt-10 mb-10 px-4">
-      <h2 class="text-3xl font-bold text-white">How We Got Here</h2>
-      <p class="mt-4 text-lg text-gray-200 mx-auto max-w-2xl">
-        The Space started as an idea proposed in the fall of 2023 at the local Denver BitDevs chapter.
-        Shortly after, we outlined a vision, and brought everyone together who wanted to help make it a reality.
-      </p>
-    </section>
+<!-- How We Got Here -->
+<section class="py-10 mt-0 mb-0 px-4">
+  <h2 class="text-4xl text-center font-bold text-white">How We Got Here</h2>
+  <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
+    The Space started as an idea from a Denver BitDevs event in the fall of 2023. High turnout and signal showed clear interest for a bitcoin citadel in the Rocky Mountain front range.
+    Over the following months, our founding volunteers met weekly to fine tune our vision and develop a plan to bring The Space to life.
+  </p>
+  <div class="mt-10 mx-auto max-w-2xl p-6" style="background-color: #131313; border-radius: 0.5rem; box-shadow: 0 2px 4px rgb(0, 0, 0);">
+    <ul class="text-lg text-white list-disc list-inside">
+      <li>Community research and feedback</li>
+      <li>Mission, values, charter, and bylaws</li>
+      <li>Partner outreach</li>
+      <li>Treasury and FOSS infrastructure</li>
+      <li>Founding event: block height, board vote, and membership growth</li>
+      <li>Nonprofit filing, bank account, and server setup</li>
+      <li>Real estate scouting, curriculum development, and event planning</li>
+    </ul>
+  </div>
+  <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
+    Since last fall, our team has made significant progress towards opening our physical community hub.
+  </p>
+</section>
+
   </div>
 
   <!-- Volunteers -->
   <div class="volunteer-section text-center bg-black py-10">
-    <h2 class="mt-20 text-3xl font-bold text-white">Founding Volunteers</h2>
+    <h2 class="mt-20 text-4xl font-bold text-white">Founding Volunteers</h2>
     <p class="mt-4 text-center text-gray-200">Cheers to all the amazing bitcoiners across the Rocky Mountain region who helped bring this together.</p>
     <div class="mt-20 volunteer-container">
       {publishedVolunteers.map((volunteerEntry) => (
