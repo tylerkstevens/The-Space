@@ -4,22 +4,20 @@ import { Icon } from "astro-icon/components";
 
 // List of sponsor images, their alt text, and URLs
 const sponsors = [
-  { src: "/assets/sponsors/fedimint.png", alt: "Fedimint", url: "https://fedimint.org" },
+  { src: "/assets/sponsors/fedi.png", alt: "Fedi", url: "https://www.fedi.xyz" },
   { src: "/assets/sponsors/compassmining_logo.jpeg", alt: "Compass", url: "https://compassmining.io" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-  { src: "/assets/branding/The Space_Logos_V2-13.png", alt: "Sponsor Us", format: "png" },
-
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", format: "png" },
   // Add more sponsors as needed
 ];
 ---
 
 <style>
   .custom-gradient {
-    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    background: linear-gradient(135deg, #E51F5D, #F68830,#F5D54C, #FDE3B7);
   }
   .white-svg {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
@@ -33,7 +31,7 @@ const sponsors = [
 </style>
 
 <div class="mt-24 mb-0 custom-gradient py-12">
-  <h2 class="text-center text-slate-100">Supported by bitcoin believers and organizations. Help us spread the word.</h2>
+  <h2 class="text-center text-white">Supported by bitcoin believers and organizations. Help us spread the word.</h2>
   <div class="sponsors-grid mt-10 mb-2">
     {sponsors.map(sponsor => (
       <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class="block">

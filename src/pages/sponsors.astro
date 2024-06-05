@@ -1,10 +1,9 @@
 ---
-// Existing imports and setup remain the same
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import PricingCard from "@components/pricing.astro"; // Import PricingCard component
+import PricingCard from "@components/pricing.astro";
 
 const publishedSponsors = await getCollection("sponsors", ({ data }) => {
   return !data.draft && new Date(data.publishDate) <= new Date();
@@ -44,22 +43,19 @@ const sponsorPlan = {
 
       <!-- Founding Sponsors Section -->
       <div class="order-1 md:order-2 flex flex-col gap-3">
-        <h2 class="font-bold text-3xl text-gray-800">Founding Sponsors</h2>
+        <h2 class="font-bold text-3xl text-gray-800">Founding Support</h2>
         <div class="grid grid-cols-3 md:grid-cols-3 gap-6 mt-5 pr-0 lg:pr-16">
           {publishedSponsors.map(sponsor => (
-            <div class="group">
+            <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="block">
               <div class="relative w-full aspect-square">
                 <img src={sponsor.data.avatar?.src || '/default-event-image.png'}
                     alt={sponsor.data.avatar.alt || 'Sponsor Image'}
                     class="w-full h-full rounded bg-white object-contain aspect-square" />
-                <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3 group-hover:opacity-100">
-                  <h3 class="text-lg font-semibold text-center w-full">{sponsor.data.name}</h3>
-                </a>
               </div>
               <div class="mt-4 text-center px-4">
                 <p class="text-gray-600">{sponsor.data.title}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
