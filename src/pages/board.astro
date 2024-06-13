@@ -69,10 +69,4 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
   .team-card:hover {
     transform: translateY(-5px);
   }
-
-  @media (max-width: 800px) and (orientation: landscape) {
-    .team-grid {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on landscape-oriented small screens */
-    }
-  }
 </style>
