@@ -26,14 +26,14 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
         Passionate about bitcoin and community.
       </h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        The Board of Directors consists of nine individuals around the Denver area, passionate about bitcoin, open source technologies, and building a community focused on freedom and education. We come from diverse backgrounds with different personalities, experiences, and skills.
+        The Board of Directors consists of nine individuals around the Denver area, committed to bitcoin, open source technologies, education, and community building. We come from diverse backgrounds with different personalities, experiences, and skills.
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12 mb-20">
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12 mb-20 team-grid">
       {
         publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group relative">
-            <div class="relative w-full aspect-square">  <!-- Make this div relative -->
+          <div class="group border-4 border-[#ffffff] rounded-lg p-2 team-card">
+            <div class="relative w-full aspect-square">
               <Picture
                 src={teamMemberEntry.data.avatar.src}
                 alt={teamMemberEntry.data.avatar.alt}
@@ -42,12 +42,11 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
                 height={400}
                 class="w-full rounded bg-white object-cover object-center aspect-square"
               />
-              <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3">
+              <div class="absolute inset-0 bg-black bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4 space-y-3 rounded">
                 <h3 class="text-xl font-semibold">{teamMemberEntry.data.name}</h3>
                 <p>{teamMemberEntry.data.bio}</p>
               </div>
             </div>
-
             <div class="mt-4 text-center">
               <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
               <h3 class="text-sm text-slate-500">
@@ -60,3 +59,20 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
     </div>
   </Container>
 </Layout>
+
+<style>
+  .team-card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+  }
+
+  @media (max-width: 800px) and (orientation: landscape) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on landscape-oriented small screens */
+    }
+  }
+</style>
