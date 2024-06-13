@@ -7,5 +7,5 @@ avatar: {
     src: "/assets/sponsors/compassmining_logo.jpeg",
     alt: "Compass"
 }
-publishDate: "2022-11-09 15:39"
+publishDate: "2023-11-09 15:39"
 ---

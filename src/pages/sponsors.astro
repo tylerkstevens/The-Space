@@ -1,12 +1,23 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import PricingCard from "@components/pricing.astro";
+import Link from "@components/ui/link.astro"; // Ensure this import is here
 
-const publishedSponsors = await getCollection("sponsors", ({ data }) => {
+// Define the type for your sponsor entries
+type SponsorEntry = CollectionEntry<"sponsors">;
+
+const publishedSponsors: SponsorEntry[] = await getCollection("sponsors", ({ data }) => {
   return !data.draft && new Date(data.publishDate) <= new Date();
+});
+
+// Sort sponsors by publish date (oldest to newest)
+publishedSponsors.sort((a, b) => {
+  const dateA = new Date(a.data.publishDate || "1970-01-01").getTime();
+  const dateB = new Date(b.data.publishDate || "1970-01-01").getTime();
+  return dateA - dateB;
 });
 
 const sponsorPlan = {
@@ -29,31 +40,72 @@ const sponsorPlan = {
 };
 ---
 
+<style>
+  .custom-gradient {
+    background: linear-gradient(135deg, #E51F5D, #F68830,#F5D54C, #FDE3B7);
+  }
+  .white-svg {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+  .sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+    gap: 2rem; /* Increase the gap for more horizontal padding */
+    justify-items: center;
+  }
+  @media (max-width: 800px) {
+    .sponsors-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+    .sponsors-grid img {
+      width: 80px; /* Adjust the size as needed */
+      height: 80px; /* Adjust the size as needed */
+    }
+    .order-1.md\:order-2 {
+      margin-bottom: 20px; /* Adjust the value as needed for the desired spacing */
+    }
+  }
+  @media (max-width: 1200px) and (min-width: 801px) {
+    .sponsors-grid img {
+      width: 120px; /* Adjust the size as needed */
+      height: 120px; /* Adjust the size as needed */
+    }
+  }
+  @media (min-width: 1201px) {
+    .sponsors-grid img {
+      width: 150px; /* Adjust the size as needed */
+      height: 150px; /* Adjust the size as needed */
+    }
+  }
+  @media (max-width: 800px) and (orientation: landscape) {
+    .sponsors-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on landscape-oriented small screens */
+    }
+  }
+</style>
+
 <Layout title="Sponsors">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Sponsors</Fragment>
       <Fragment slot="desc">
-        The Space is made possible by founding donors and sponsors. <br/> Join us in building something special.
+        The Space is made possible by founding members, donors and sponsors. <br/> Join us in building something special.
       </Fragment>
     </Sectionhead>
 
     <!-- Sponsor and Founding Sponsors Section -->
-    <div class="grid md:grid-cols-2 gap-6 mx-auto max-w-6xl mt-10 mb-20 px-4 lg:px-0">
+    <div class="grid md:grid-cols-2 gap-6 mx-auto max-w-6xl mt-20 mb-20 px-4 lg:px-0">
 
       <!-- Founding Sponsors Section -->
       <div class="order-1 md:order-2 flex flex-col gap-3">
         <h2 class="font-bold text-3xl text-gray-800">Founding Support</h2>
-        <div class="grid grid-cols-3 md:grid-cols-3 gap-6 mt-5 pr-0 lg:pr-16">
+        <div class="grid grid-cols-3 md:grid-cols-3 gap-6 mt-5 pr-0 lg:pr-16 sponsors-grid">
           {publishedSponsors.map(sponsor => (
             <a href={sponsor.data.url} target="_blank" rel="noopener noreferrer" class="block">
               <div class="relative w-full aspect-square">
                 <img src={sponsor.data.avatar?.src || '/default-event-image.png'}
                     alt={sponsor.data.avatar.alt || 'Sponsor Image'}
                     class="w-full h-full rounded bg-white object-contain aspect-square" />
-              </div>
-              <div class="mt-4 text-center px-4">
-                <p class="text-gray-600">{sponsor.data.title}</p>
               </div>
             </a>
           ))}
@@ -65,6 +117,23 @@ const sponsorPlan = {
         <PricingCard plan={sponsorPlan} />
       </div>
       
+    </div>
+    
+    <!-- Donate to The Space Button -->
+    <div class="flex justify-center mt-0 mb-20">
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos"
+        class="flex gap-3 items-center justify-center bg-[#D9314A] hover:bg-[#D9314A] text-black"
+        target="_blank"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="text-black w-7 h-7" viewBox="0 0 128 128">
+          <path d=""></path>
+        </svg>
+        Donate to The Space
+      </Link>
     </div>
   </Container>
 </Layout>
