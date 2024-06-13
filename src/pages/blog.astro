@@ -5,15 +5,9 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// Filter blog entries with 'draft: false' & date before current date
-const publishedBlogEntries = await getCollection("blog", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
-
-// Sort content entries by publication date
-publishedBlogEntries.sort(function (a, b) {
-  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+// Fetch and sort blog entries
+const publishedBlogEntries = (await getCollection("blog", ({ data }) => !data.draft && data.publishDate < new Date()))
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
 ---
 
 <Layout title="Blog">
@@ -25,12 +19,12 @@ publishedBlogEntries.sort(function (a, b) {
       </Fragment>
     </Sectionhead>
     <main class="mt-16 mb-20">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
-        {
-          publishedBlogEntries.map((blogPostEntry, index) => (
-            <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
-                <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
+      <ul class="grid max-w-4xl mx-auto">
+        {publishedBlogEntries.map((blogPostEntry, index) => (
+          <li class={`border-t border-gray-300 ${blogPostEntry.data.image.src ? 'pt-4 pb-4' : 'pt-4 pb-4 no-image'}`}>
+            <a href={`/blog/${blogPostEntry.slug}`}>
+              <div class={`grid md:grid-cols-2 gap-5 md:gap-10 items-center ${blogPostEntry.data.image.src ? '' : 'no-image-content'}`}>
+                {blogPostEntry.data.image.src ? (
                   <Picture
                     src={blogPostEntry.data.image.src}
                     alt={blogPostEntry.data.image.alt}
@@ -39,36 +33,67 @@ publishedBlogEntries.sort(function (a, b) {
                     height={600}
                     loading={index <= 2 ? "eager" : "lazy"}
                     decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md object-cover object-center bg-white"
+                    class="blog-image w-full rounded-md object-cover object-center bg-white"
                   />
-                  <div>
-                    <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
-                      {blogPostEntry.data.category}
+                ) : (
+                  <div class="blog-image-placeholder w-full h-0"></div>
+                )}
+                <div class="md:pl-4 text-content">
+                  <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+                    {blogPostEntry.data.category}
+                  </span>
+                  <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1">
+                    {blogPostEntry.data.title}
+                  </h2>
+                  <div class="flex gap-2 mt-3">
+                    <span class="text-gray-400">
+                      {blogPostEntry.data.author}
                     </span>
-
-                    <h2 class="text-3xl font-semibold leading-snug tracking-tight mt-1 ">
-                      {blogPostEntry.data.title}
-                    </h2>
-
-                    <div class="flex gap-2 mt-3">
-                      <span class="text-gray-400">
-                        {blogPostEntry.data.author}
-                      </span>
-                      <span class="text-gray-400">• </span>
-                      <time
-                        class="text-gray-400"
-                        datetime={blogPostEntry.data.publishDate.toISOString()}
-                      >
-                        {blogPostEntry.data.publishDate.toDateString()}
-                      </time>
-                    </div>
+                    <span class="text-gray-400">• </span>
+                    <time
+                      class="text-gray-400"
+                      datetime={blogPostEntry.data.publishDate.toISOString()}
+                    >
+                      {blogPostEntry.data.publishDate.toDateString()}
+                    </time>
                   </div>
                 </div>
-              </a>
-            </li>
-          ))
-        }
+              </div>
+            </a>
+          </li>
+        ))}
       </ul>
     </main>
   </Container>
 </Layout>
+
+<style>
+  .no-image {
+    padding-top: 0 !important;
+  }
+  .no-image-content .text-content {
+    padding-top: 1rem !important;
+  }
+  @media (max-width: 768px) {
+    .no-image .blog-image-placeholder {
+      display: none;
+    }
+  }
+  @media (max-width: 1024px) and (orientation: landscape) {
+    .blog-image {
+      width: 35% !important;
+      height: auto !important;
+    }
+    .md:grid-cols-2 {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .no-image-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: center;
+    }
+    .no-image .md:pl-4 {
+      grid-column: 2 / span 1 !important;
+    }
+  }
+</style>
