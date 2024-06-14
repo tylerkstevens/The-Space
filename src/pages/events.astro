@@ -30,9 +30,9 @@ pastEvents = pastEvents.sort((a, b) => {
     <!-- Upcoming Events Section -->
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
       <h2 class="font-bold text-3xl text-gray-800">Upcoming Events</h2>
-      <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+      <div class="grid event-grid gap-10 mx-auto max-w-4xl mt-12">
         {upcomingEvents.length === 0 ? (
-          <div class="border-4 border-[#D9314A] rounded-lg p-6 bg-gray-100 text-center text-lg text-gray-800">
+          <div class="group border-4 rounded-lg p-6 text-center text-lg text-white event-card custom-gradient">
             More events coming soon!
           </div>
         ) : (
@@ -75,7 +75,7 @@ pastEvents = pastEvents.sort((a, b) => {
     <!-- Past Events Section -->
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16 mb-20">
       <h2 class="font-bold text-3xl text-gray-800">Past Events</h2>
-      <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-12">
+      <div class="grid event-grid gap-10 mx-auto max-w-4xl mt-12">
         {pastEvents.map(event => (
           <div class="group border-4 rounded-lg p-2 event-card">
             <div class="relative w-full aspect-square">
@@ -116,5 +116,26 @@ pastEvents = pastEvents.sort((a, b) => {
 
   .event-card:hover {
     transform: translateY(-5px);
+  }
+
+  .custom-gradient {
+    background: linear-gradient(135deg, #E51F5D, #F68830, #F5D54C, #FDE3B7);
+  }
+
+  .event-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .event-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    .event-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

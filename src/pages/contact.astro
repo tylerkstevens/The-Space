@@ -13,7 +13,7 @@ import { Icon } from "astro-icon/components";
       <Fragment slot="desc">Get in touch with us!</Fragment>
     </Sectionhead>
 
-    <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16 mb-20">
+    <div class="grid contact-grid gap-10 mx-auto max-w-4xl mt-16 mb-20">
       <div class="contact-card bg-gradient border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
         <h2 class="font-medium text-2xl text-white">Contact The Space</h2>
         <p class="text-lg leading-relaxed text-white mt-3">
@@ -79,5 +79,22 @@ import { Icon } from "astro-icon/components";
 
   .contact-card:hover {
     transform: translateY(-5px);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 468px) and (orientation: landscape) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

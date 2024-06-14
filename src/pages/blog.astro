@@ -19,9 +19,9 @@ const publishedBlogEntries = (await getCollection("blog", ({ data }) => !data.dr
       </Fragment>
     </Sectionhead>
     <main class="mt-16 mb-20">
-      <ul class="grid max-w-4xl mx-auto gap-10">
+      <ul class="grid max-w-4xl mx-auto gap-4"> <!-- Adjusted gap -->
         {publishedBlogEntries.map((blogPostEntry, index) => (
-          <li class="border border-gray-300 p-4 rounded-lg shadow-sm transition hover:shadow-lg">
+          <li class={`group border-4 border-[#ffffff] rounded-lg p-2 blog-card ${!blogPostEntry.data.image.src ? 'blog-post-no-image' : ''} mb-4`}> <!-- Applied styles -->
             <a href={`/blog/${blogPostEntry.slug}`} class="grid blog-post-grid gap-5 items-center">
               {blogPostEntry.data.image.src ? (
                 <Picture
@@ -49,7 +49,7 @@ const publishedBlogEntries = (await getCollection("blog", ({ data }) => !data.dr
                   <span class="author-name">
                     {blogPostEntry.data.author}
                   </span>
-                  <span>• </span>
+                  <span>•</span>
                   <time datetime={blogPostEntry.data.publishDate.toISOString()}>
                     {blogPostEntry.data.publishDate.toDateString()}
                   </time>
@@ -69,13 +69,28 @@ const publishedBlogEntries = (await getCollection("blog", ({ data }) => !data.dr
     grid-template-columns: 20% 1fr;
     gap: 1rem;
   }
+
+  .blog-post-no-image .blog-post-grid {
+    grid-template-columns: 1fr;
+  }
+
   @media (max-width: 768px) {
     .blog-post-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
     }
+
     .text-content {
       padding-top: 0;
     }
+  }
+
+  .blog-card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-5px);
   }
 </style>
