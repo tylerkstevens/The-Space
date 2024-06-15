@@ -5,12 +5,10 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// Fetch all volunteer files dynamically
 const publishedVolunteers = await getCollection("volunteers", ({ data }) => {
   return !data.draft && new Date(data.publishDate) < new Date();
 });
 
-// Values data
 const values = [
   {
     title: "Individualism",
@@ -62,28 +60,32 @@ const values = [
 
 <style>
   body, html {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
   }
 
   .custom-gradient {
-    background: linear-gradient(130deg,#E51F5D,#F68830,#F5D54C,#F68830);
+    background: linear-gradient(130deg, #E51F5D, #F68830, #F5D54C, #F68830);
   }
+
   .white-svg {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
   }
+
   .volunteer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 0 20px; /* Use smaller padding */
-    max-width: 1200px; /* Set a max width */
-    margin: 0 auto; /* Center the container */
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
+
   .volunteer-container .volunteer {
     display: inline-block;
     text-align: center;
   }
+
   .volunteer-container img {
     border-radius: 50%;
     width: 100px;
@@ -92,55 +94,65 @@ const values = [
     display: block;
     margin: 0 auto;
   }
+
   .volunteer-section {
     padding-top: 0;
     margin-top: -20px;
   }
+
   .volunteer-section h2, .volunteer-section p {
     margin-bottom: 20px;
   }
+
   .table-wrapper {
     overflow-x: auto;
     overflow-y: hidden;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgb(0, 0, 0);
-    background-color: #131313; /* Ensure the wrapper has the desired background */
-    padding: 1rem;
+    background-color: #131313;
+    padding: 0.5rem;
   }
+
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     table-layout: fixed;
-    background-color: transparent; /* Make the table background transparent to show wrapper background */
+    background-color: transparent;
   }
+
   th, td {
     border: 2px solid #000000;
     padding: 10px;
     text-align: center;
-    background-color: #131313; /* Ensure cells have the same background */
-    color: #fff; /* Default white text */
-    width: 14.2857%; /* Set equal width for all columns (100% / 7 columns) */
-    position: relative; /* For positioning circles */
+    background-color: #131313;
+    color: #fff;
+    width: 14.2857%;
+    position: relative;
   }
+
   th {
     background-color: #131313;
   }
+
   .checkmark::before {
     content: "✓";
-    color: #b1b1b1;
+    color: #bebebe;
     font-size: 20px;
   }
+
   .dash::before {
     content: "—";
-    color: #878787;
+    color: #a4a4a4;
     font-size: 20px;
   }
+
   .cross::before {
     content: "✗";
-    color: #505050;
+    color: #6d6d6d;
     font-size: 20px;
   }
+
   .custom-logo {
     display: inline-block;
     width: 20px;
@@ -149,94 +161,141 @@ const values = [
     background-size: contain;
   }
 
+  @media (min-width: 1025px) {
+    .custom-padding {
+      padding: 0 68px;
+    }
+  }
+
   @media (max-width: 1024px) {
-    .volunteer-container {
-      padding: 0 20px; /* Adjust padding for medium screens */
-      max-width: 100%; /* Ensure it doesn't overflow */
+    .custom-padding {
+      padding: 0 20px;
     }
   }
 
   @media (max-width: 768px) {
-    .volunteer-container {
-      padding: 0 15px; /* Adjust padding for small screens */
-      gap: 10px;
-      max-width: 100%; /* Ensure it doesn't overflow */
+    .custom-padding {
+      padding: 0 15px;
     }
+
     th, td {
       padding: 5px;
+      font-size: 12px;
     }
+
     .checkmark::before, .dash::before, .cross::before {
       font-size: 15px;
     }
   }
 
   @media (max-width: 480px) {
-    .volunteer-container {
-      padding: 0 10px; /* Adjust padding for extra small screens */
-      max-width: 100%; /* Ensure it doesn't overflow */
+    .custom-padding {
+      padding: 0 10px;
     }
+
+    th, td {
+      padding: 1px;
+      font-size: 10px;
+    }
+
+    .checkmark::before, .dash::before, .cross::before {
+      font-size: 12px;
+    }
+  }
+
+  .list-custom {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .list-custom li {
+    padding-left: 50px;
+    position: relative;
+    margin-top: 1rem;
+    text-align: left;
+  }
+
+  .list-custom li:nth-child(1)::before {
+    content: "";
+    background: url('/assets/branding/Logos/TheSpace_Logos_Number1.png') no-repeat center center;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .list-custom li:nth-child(2)::before {
+    content: "";
+    background: url('/assets/branding/Logos/TheSpace_Logos_Number2.png') no-repeat center center;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .list-custom li:nth-child(3)::before {
+    content: "";
+    background: url('/assets/branding/Logos/TheSpace_Logos_Number3.png') no-repeat center center;
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 </style>
 
 <Layout title="About Us">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About Us</Fragment>
-      <Fragment slot="desc">Who we are. Our mission. And what we bring to the community.</Fragment>
+      <Fragment slot="title">About The Space</Fragment>
+      <Fragment slot="desc">
+        The Space is a bitcoin citadel and community hub located in Denver, CO. <br/><br/>
+        Our nonprofit organization is dedicated to freedom and bitcoin initiatives. We offer a place for those in The Space to connect, work, socialize and learn.
+        Join us for our events, presentations and workshops. Enter The Space!
+      </Fragment>
     </Sectionhead>
 
-    <div class="space-y-16">
-      <!-- Logo Image and Description of our Non-Profit Org -->
-      <section class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
-        <img src="/images/logo.png" alt="Logo Image" class="w-full lg:w-1/2 rounded-lg shadow-md" />
-        <div class="lg:w-1/2">
-          <h2 class="text-3xl font-bold text-gray-800">About The Space</h2>
-          <p class="mt-4 text-lg text-gray-600">
-            The Space is a nonprofit organization dedicated to [brief description of your main focus]. Our mission is to [mission statement]. We are committed to [highlight a key commitment or goal].
-          </p>
-        </div>
+    <div class="space-y-16 px-4">
+      <section class="flex flex-col mt-20 items-center lg:space-y-8">
+        <img src="/assets/branding/Logos/TheSpace_Logos_Ring_3crop.png" alt="Logo Image" class="w-full lg:w-5/6 rounded-lg" style="box-shadow: none;" />
       </section>
 
-      <!-- Our Vision -->
-      <section class="text-center py-10 bg-blue-100 rounded-lg shadow-md">
-        <h2 class="text-3xl font-bold text-gray-800">Vision</h2>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
-          We envision The Space as the leading hub for education, collaboration, networking, and creative development within the Bitcoin ecosystem.
-          Our goal is to unite a physical community of exceptional individuals and organizations that share our core values, emphasizing education, freedom, and local economy Bitcoin adoption.
-        </p>
-        <p class="mt-4 text-lg text-gray-600 mx-auto max-w-2xl">
-          We aspire for our open-source documentation and resources to empower other local communities to replicate The Space model, establishing bitcoin citadels worldwide.
-          No matter the city, we foresee arriving at The Space and knowing you're in the right spot.
-        </p>
+      <section class="text-center py-10 px-4 bg-black rounded-lg shadow-md">
+        <h2 class="text-3xl font-bold text-white">Our Vision</h2>
+        <ul class="list-custom mx-auto max-w-1xl mt-10 text-lg text-white">
+          <li>An organization with global influence, advancing freedom in the digital age.</li>
+          <li>A community of outstanding individuals and organizations aligned with our principles and values.</li>
+          <li>The premier place to collaborate, network, educate, and support creative development for bitcoin and sovereign tech.</li>
+        </ul>
       </section>
 
-      <!-- Values -->
       <section class="mt-16">
         <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">Our Values</h2>
         <p class="text-lg mt-4 text-slate-600">What we stand for</p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-          {
-            values.map((item) => (
-              <div class="flex gap-4 items-start">
-                <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-                  <Icon class="text-white" name={item.icon} />
-                </div>
-                <div>
-                  <h3 class="font-semibold text-lg">{item.title}</h3>
-                  <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-                </div>
+          {values.map((item) => (
+            <div class="flex gap-4 items-start">
+              <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+                <Icon class="text-white" name={item.icon} />
               </div>
-            ))
-          }
+              <div>
+                <h3 class="font-semibold text-lg">{item.title}</h3>
+                <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
   </Container>
 
-  <!-- Custom Gradient Wrapper for Our Unique Offering and How We Got Here Sections-->
   <div class="custom-gradient py-12 mt-20">
-    <!-- Our Unique Offering -->
-    <section class="text py-10 text-center lg:px-60 md:px-40 sm:px-4">
+    <section class="text py-10 text-center custom-padding">
       <h2 class="mt-0 mb-10 text-4xl text-center font-bold text-white">Something Unique</h2>
       <div class="overflow-auto mt-8 px-8 table-wrapper">
         <table class="unique-table mx-auto">
@@ -304,38 +363,36 @@ const values = [
       </div>
     </section>
 
-<!-- How We Got Here -->
-<section class="py-10 mt-0 mb-0 px-4">
-  <h2 class="text-4xl text-center font-bold text-white">How We Got Here</h2>
-  <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
-    The Space started as an idea from a Denver BitDevs event in the fall of 2023. High turnout and signal showed clear interest for a bitcoin citadel in the Rocky Mountain front range.
-    Over the following months, our founding volunteers met weekly to fine tune our vision and develop a plan to bring The Space to life.
-  </p>
-  <div class="mt-10 mx-auto max-w-2xl p-6" style="background-color: #131313; border-radius: 0.5rem; box-shadow: 0 2px 4px rgb(0, 0, 0);">
-    <ul class="text-lg text-white list-disc list-inside">
-      <li>Community research and feedback</li>
-      <li>Mission, values, charter, and bylaws</li>
-      <li>Partner outreach</li>
-      <li>Treasury and FOSS infrastructure</li>
-      <li>Founding event: block height, board vote, and membership growth</li>
-      <li>Nonprofit filing, bank account, and server setup</li>
-      <li>Real estate scouting, curriculum development, and event planning</li>
-    </ul>
+    <section class="py-10 mt-4 mb-0 px-4">
+      <h2 class="text-4xl text-center font-bold text-white">How We Got Here</h2>
+      <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
+        The idea for The Space was born at a Denver BitDevs event in the fall of 2023. High attendance and engagement highlighted a strong interest in establishing a bitcoin citadel on the Rocky Mountain front range. Over the following months, our dedicated founding volunteers gathered weekly to refine our vision and work to bring The Space to life.
+      </p>
+      <div class="mt-10 mx-auto max-w-2xl p-6" style="background-color: #131313; border-radius: 0.5rem; box-shadow: 0 2px 4px rgb(0, 0, 0);">
+        <ul class="text-lg text-white list-disc list-inside">
+          <h2> The Process:</h2><br/>
+          <li>Community research and feedback</li>
+          <li>Mission, values, charter, and bylaws definition</li>
+          <li>Treasury and FOSS infrastructure development</li>
+          <li>Founding event: block height, board vote, and membership growth</li>
+          <li>Nonprofit filing, bank account, and server setup</li>
+          <li>Event planning, committee formation and curriculum development</li>
+          <li>Partnership and sponsor outreach</li>
+          <li>Real estate scouting</li>
+        </ul>
+      </div>
+      <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
+        Our team has made significant progress towards opening our physical community hub.
+      </p>
+    </section>
   </div>
-  <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
-    Since last fall, our team has made significant progress towards opening our physical community hub.
-  </p>
-</section>
 
-  </div>
-
-  <!-- Volunteers -->
   <div class="volunteer-section text-center bg-black py-10">
     <h2 class="mt-20 text-4xl font-bold text-white">Founding Volunteers</h2>
-    <p class="mt-4 text-center text-gray-200">Cheers to all the amazing bitcoiners across the Rocky Mountain region who helped bring this together.</p>
+    <p class="mt-4 px-10 text-center text-gray-200">Cheers to all the amazing bitcoiners across the Rocky Mountain region who helped bring this together.</p>
     <div class="mt-20 volunteer-container">
       {publishedVolunteers.map((volunteerEntry) => (
-        <div class="volunteer">
+        <div class="volunteer mt-4">
           <img src={volunteerEntry.data.avatar.src} alt={volunteerEntry.data.avatar.alt} class="h-24 w-24 object-cover rounded-full border-2 border-white shadow-md" />
           <p class="text-white mt-2">{volunteerEntry.data.name}</p>
         </div>

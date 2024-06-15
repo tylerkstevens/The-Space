@@ -52,14 +52,14 @@ const makeTitle = title
       }}
     />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-white">
     <!-- Navbar with proper spacing -->
     <div class="container mx-auto px-4">
       <Navbar />
     </div>
     
     <!-- Main content area -->
-    <main class="flex-grow">
+    <main class="flex-grow mt-0"> <!-- Added margin-top to reduce spacing -->
       <slot />
     </main>
     
@@ -86,6 +86,12 @@ const makeTitle = title
       main {
         display: flex;
         flex-direction: column;
+      }
+
+      /* Reduce spacing between navbar and header */
+      header {
+        margin-top: 0;
+        padding-top: 0;
       }
     </style>
   </body>
