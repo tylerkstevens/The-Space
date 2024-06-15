@@ -42,82 +42,26 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
   <Container>
     <Sectionhead>
       <Fragment slot="title">Member Dashboard</Fragment>
-      <Fragment slot="desc">Links and other information for members.</Fragment>
+      <Fragment slot="desc">Links and other information. Just for you.</Fragment>
     </Sectionhead>
     <main class="flex-1 flex flex-col gap-4 items-center p-4 mt-5 justify-center">
       <section class="w-full max-w-md">
-        <h1 class="text-zinc-900 w-full mb-1">
+        <h1 class="text-zinc-900 w-full mt-4 mb-2">
           Welcome, {email}
         </h1>
-        <form
-          class="grid grid-cols-1 gap-3 w-full"
-          action="https://t.me/+h4pcGVvoUJ5hOWQx"
-        >
-          <button
-            type="submit"
-            class="bg-zinc-900
-            border-zinc-900
-            py-1.5
-            border
-            rounded-md
-            my-2
-            text-zinc-100
-            font-medium
-            text-sm
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-blue-500
-            disabled:opacity-50
-            disabled:cursor-not-allowed"
-            >Members-Only Telegram</button>
-        </form>
-        <form
-          class="grid grid-cols-1 gap-3 w-full"
-          action="https://lns.lightningshops.io/apps/3otbAyyp3TDiurkXSgCD9s1MdmGB/pos"
-        >
-          <button
-            type="submit"
-            class="bg-zinc-900
-            border-zinc-900
-            py-1.5
-            border
-            rounded-md
-            my-2
-            text-zinc-100
-            font-medium
-            text-sm
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-blue-500
-            disabled:opacity-50
-            disabled:cursor-not-allowed"
-            >Membership Dues Payment</button>
-        </form>
-        <form
-          class="grid grid-cols-1 gap-3 w-full"
-          action="/api/auth/signout"
-        >
-          <button
-            type="submit"
-            class="bg-zinc-900
-            border-zinc-900
-            py-1.5
-            border
-            rounded-md
-            my-2
-            text-zinc-100
-            font-medium
-            text-sm
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-blue-500
-            disabled:opacity-50
-            disabled:cursor-not-allowed"
-            >Sign Out</button>
-        </form>
+        <div class="grid grid-cols-1 gap-2 w-full">
+          <a href="https://t.me/+h4pcGVvoUJ5hOWQx" target="_blank" class="bg-zinc-900 border-zinc-900 text-center py-1.5 border rounded-md my-2 text-zinc-100 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+            Members-Only Telegram
+          </a>
+          <a href="https://lns.lightningshops.io/apps/3otbAyyp3TDiurkXSgCD9s1MdmGB/pos" target="_blank" class="bg-zinc-900 text-center border-zinc-900 py-1.5 border rounded-md my-2 text-zinc-100 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+            Membership Dues Payment
+          </a>
+          <form action="/api/auth/signout" class="grid grid-cols-1 gap-3 w-full">
+            <button type="submit" class="bg-zinc-900 border-zinc-900 py-1.5 border rounded-md my-2 text-zinc-100 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+              Sign Out
+            </button>
+          </form>
+        </div>
       </section>
       
       <!-- Upcoming Member Exclusive Events Section -->
@@ -166,7 +110,7 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
 
 <style>
   .bg-gradient {
-    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    background: linear-gradient(0deg, #E51F5D, #F68830,#F5D54C, #FDE3B7);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
   }
@@ -176,7 +120,7 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
   }
 
   .event-card {
-    background: linear-gradient(135deg, #f3e18a, #febe00, #E74C3C, #D9314A, #15a393);
+    background: linear-gradient(0deg, #E51F5D, #F68830,#F5D54C, #FDE3B7);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
   }

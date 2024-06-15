@@ -1,0 +1,142 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+---
+
+<Layout title="Resources">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Resources</Fragment>
+      <Fragment slot="desc">
+        Organization documents, tech stack, operational resources, and FAQ. <br/><br/>
+        The Space is an education-focused 501(c)(3) organization, dedicated to transparency, integrity, and member advocacy.
+        Rooted in bitcoin and the open-source movement, we value freedom and working publicly.
+        These principles guide our responsible treasury management, organizational operations, and sustainability.
+        See the resources below for more detail.
+      </Fragment>
+    </Sectionhead>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 mb-20">
+      <!-- Member Resources Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Member Resources</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">Key information for members.</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/member-handbook.pdf" class="text-blue-500 hover:underline">Member Handbook</a></li>
+          <li><a href="/docs/building-information.pdf" class="text-blue-500 hover:underline">Code of Conduct</a></li>
+        </ul>
+      </section>
+
+      <!-- Tech Stack Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Tech Stack</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">Our favorite tools and resources.</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/tech-stack.pdf" class="text-blue-500 hover:underline">File Storage and Office Suite</a></li>
+          <li><a href="/docs/event-management.pdf" class="text-blue-500 hover:underline">Event Management and RSVPs</a></li>
+          <li><a href="/docs/messaging-channels.pdf" class="text-blue-500 hover:underline">Communication Channels</a></li>
+        </ul>
+      </section>
+
+      <!-- Transparency Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Transparency</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">Don't trust. Verify.</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/bylaws.pdf" class="text-blue-500 hover:underline">Executed By-laws</a></li>
+          <li><a href="/docs/record-retention.pdf" class="text-blue-500 hover:underline">Record Retention</a></li>
+          <li><a href="/docs/board-minutes.pdf" class="text-blue-500 hover:underline">Board Meeting Minutes</a></li>
+        </ul>
+      </section>
+
+      <!-- Operations Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Operations</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">How we operate.</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/self-hosting.pdf" class="text-blue-500 hover:underline">Self-Hosting</a></li>
+          <li><a href="/docs/events.pdf" class="text-blue-500 hover:underline">Events</a></li>
+          <li><a href="/docs/committees.pdf" class="text-blue-500 hover:underline">Committees</a></li>
+          <li><a href="/docs/announcements.pdf" class="text-blue-500 hover:underline">Announcements</a></li>
+          <li><a href="/docs/board-elections.pdf" class="text-blue-500 hover:underline">Elections</a></li>
+        </ul>
+      </section>
+
+      <!-- Treasury Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Treasury</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">Satoshi Status.</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/faq.pdf" class="text-blue-500 hover:underline">Bitcoin</a></li>
+          <li><a href="/docs/faq.pdf" class="text-blue-500 hover:underline">Lightning Liquidity</a></li>
+        </ul>
+      </section>
+
+      <!-- Building The Space Section -->
+      <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
+        <h2 class="font-medium text-2xl text-black">Building The Space</h2>
+        <p class="text-lg leading-relaxed text-black mt-3">How'd we do it?</p>
+        <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
+          <li><a href="/docs/our-journey.pdf" class="text-blue-500 hover:underline">Our Journey</a></li>
+          <li><a href="/docs/bitcoin-citadel-diy.pdf" class="text-blue-500 hover:underline">Bitcoin Citadel - DIY</a></li>
+          <li><a href="/docs/bitcoin-citadel-diy.pdf" class="text-blue-500 hover:underline">Branding Deck</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- FAQ Section -->
+    <Container>
+      <section class="faq-section mt-12 mb-20">
+        <h2 class="text-3xl font-bold text-gray-800">FAQ</h2>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-black">What is The Space?</p>
+          <p class="text-sm text-gray-600">The Space is a 501(c)(3) organization and community hub, focused on bitcoin education.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-black">What about alt-coins?</p>
+          <p class="text-sm text-gray-600">We're a bitcoin only organization. No distractions.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-black">How can I become a member?</p>
+          <p class="text-sm text-gray-600">You can apply for membership by filling out the contact us form. We'll follow up to get you onboarded!</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-black">Where does my money go?</p>
+          <p class="text-sm text-gray-600">All membership dues, donations, ticketed events and other revenue streams are reinvested into The Space or used to service our operational costs. Our board of directors take no compensation.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-black">How can I support The Space?</p>
+          <p class="text-sm text-gray-600">You can support The Space by becoming a member, attending our events, and making donations to support our initiatives.</p>
+        </div>
+      </section>
+    </Container>
+
+  </Container>
+</Layout>
+
+<style>
+  .bg-gradient {
+    background: linear-gradient(135deg,#ffffff, #ffffff);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .bg-gradient:hover {
+    transform: translateY(-5px);
+  }
+
+  .doc-card {
+    background: linear-gradient(135deg,#ffffff, #ffffff);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease;
+  }
+
+  .doc-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .faq-section p {
+    margin-bottom: 1rem;
+  }
+</style>
