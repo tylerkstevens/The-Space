@@ -4,17 +4,18 @@ import { Icon } from "astro-icon/components";
 
 // List of sponsor images, their alt text, and URLs
 const sponsors = [
-  { src: "/assets/sponsors/fedi.png", alt: "Fedi", url: "https://www.fedi.xyz" },
-  { src: "/assets/sponsors/compassmining_logo.jpeg", alt: "Compass", url: "https://compassmining.io" },
-  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos" },
-  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos" },
-  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos" },
-  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos" },
+  { src: "/assets/sponsors/fedi.png", alt: "Fedi", url: "https://www.fedi.xyz", format: "png" },
+  { src: "/assets/sponsors/compassmining_logo.jpeg", alt: "Compass", url: "https://compassmining.io", format: "jpeg" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos", format: "png" },
+  { src: "/assets/branding/Logos/TheSpace_Logos_Symbol_4.png", alt: "Support Us", url: "https://lns.lightningshops.io/apps/3T6tR1Nt7GNp76gg7CGaVSrChG4G/pos", format: "png" },
   // Add more sponsors as needed
 ];
 ---
 
 <style>
+  /* CSS styling. Custom background gradient, gid formatting and control for different screen sizes. */
   .custom-gradient {
     background: linear-gradient(135deg, #E51F5D, #F68830, #F5D54C, #FDE3B7);
   }
@@ -47,7 +48,7 @@ const sponsors = [
 </style>
 
 <div class="mt-24 mb-0 custom-gradient py-12">
-  <h2 class="text-center text-white">Supported by bitcoin organizations. Help us spread the word.</h2>
+  <h2 class="text-center text-white px-12">Supported by bitcoin organizations. Help us spread the word.</h2>
   <div class="sponsors-grid mt-10 mb-2">
     {sponsors.map(sponsor => (
       <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class="block">

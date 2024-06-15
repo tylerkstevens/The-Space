@@ -9,19 +9,26 @@ import Sectionhead from "@components/sectionhead.astro";
     <Sectionhead>
       <Fragment slot="title">Resources</Fragment>
       <Fragment slot="desc">
-        Organization documents, tech stack, operational resources, and FAQ. <br/><br/>
-        The Space is an education-focused 501(c)(3) organization, dedicated to transparency, integrity, and member advocacy.
-        Rooted in bitcoin and the open-source movement, we value freedom and working publicly.
-        These principles guide our responsible treasury management, organizational operations, and sustainability.
-        See the resources below for more detail.
+        <p class="text-lg mt-4 text-slate-600 px-0 md:px-4 lg:px-10">
+          Organization documents, tech stack, operational resources, and FAQ. <br/>
+        </p>
+        <p class="text-lg mt-4 text-justify text-slate-600 px-0 md:px-4 lg:px-10">
+          The Space is an education-focused organization and social hub, dedicated to transparency, integrity, and member advocacy.
+          Rooted in bitcoin and the open-source movement, we value freedom and working publicly.
+          These principles guide our responsible treasury management, organizational operations, and sustainability.
+          See the documentation below for more detail.
+        </p>
       </Fragment>
     </Sectionhead>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 mb-20">
       <!-- Member Resources Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Member Resources</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">Key information for members.</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Member Resources</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">Key information for members.</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/member-handbook.pdf" class="text-blue-500 hover:underline">Member Handbook</a></li>
           <li><a href="/docs/building-information.pdf" class="text-blue-500 hover:underline">Code of Conduct</a></li>
@@ -30,8 +37,11 @@ import Sectionhead from "@components/sectionhead.astro";
 
       <!-- Tech Stack Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Tech Stack</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">Our favorite tools and resources.</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Tech Stack</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">Our favorite tools and resources.</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/tech-stack.pdf" class="text-blue-500 hover:underline">File Storage and Office Suite</a></li>
           <li><a href="/docs/event-management.pdf" class="text-blue-500 hover:underline">Event Management and RSVPs</a></li>
@@ -41,8 +51,11 @@ import Sectionhead from "@components/sectionhead.astro";
 
       <!-- Transparency Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Transparency</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">Don't trust. Verify.</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Transparency</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">Don't trust. Verify.</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/bylaws.pdf" class="text-blue-500 hover:underline">Executed By-laws</a></li>
           <li><a href="/docs/record-retention.pdf" class="text-blue-500 hover:underline">Record Retention</a></li>
@@ -52,8 +65,11 @@ import Sectionhead from "@components/sectionhead.astro";
 
       <!-- Operations Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Operations</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">How we operate.</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Operations</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">How we operate.</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/self-hosting.pdf" class="text-blue-500 hover:underline">Self-Hosting</a></li>
           <li><a href="/docs/events.pdf" class="text-blue-500 hover:underline">Events</a></li>
@@ -65,18 +81,25 @@ import Sectionhead from "@components/sectionhead.astro";
 
       <!-- Treasury Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Treasury</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">Satoshi Status.</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Treasury</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">Satoshi Status.</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/faq.pdf" class="text-blue-500 hover:underline">Bitcoin</a></li>
           <li><a href="/docs/faq.pdf" class="text-blue-500 hover:underline">Lightning Liquidity</a></li>
+          <li><a href="/docs/faq.pdf" class="text-blue-500 hover:underline">Fiat</a></li>
         </ul>
       </section>
 
       <!-- Building The Space Section -->
       <section class="doc-card bg-white border-4 border-[#ffffff] rounded-lg p-6 transition-transform duration-500 ease hover:transform hover:translate-y-1">
-        <h2 class="font-medium text-2xl text-black">Building The Space</h2>
-        <p class="text-lg leading-relaxed text-black mt-3">How'd we do it?</p>
+        <div class="section-title flex items-center">
+          <img src="/assets/branding/Logos/TheSpace_Logos_Symbol_2.png" alt="The Space Icon" class="icon mr-2"/>
+          <h2 class="text-2xl font-semibold leading-snug tracking-tight">Building The Space</h2>
+        </div>
+        <p class="text-lg leading-relaxed text-gray-500 mt-3">How'd we do it?</p>
         <ul class="list-disc ml-5 mt-4 text-lg text-[#bebebe]">
           <li><a href="/docs/our-journey.pdf" class="text-blue-500 hover:underline">Our Journey</a></li>
           <li><a href="/docs/bitcoin-citadel-diy.pdf" class="text-blue-500 hover:underline">Bitcoin Citadel - DIY</a></li>
@@ -84,40 +107,54 @@ import Sectionhead from "@components/sectionhead.astro";
         </ul>
       </section>
     </div>
+  </Container>
 
-    <!-- FAQ Section -->
+  <!-- FAQ Section with Gradient Background -->
+  <div class="faq-gradient py-12 mt-0">
     <Container>
-      <section class="faq-section mt-12 mb-20">
-        <h2 class="text-3xl font-bold text-gray-800">FAQ</h2>
+      <section class="faq-section px-0 md:px-4 lg:px-10">
+        <h2 class="text-4xl mt-4 mb-12 font-bold text-white">FAQ</h2>
         <div class="mt-6">
-          <p class="font-semibold text-lg text-black">What is The Space?</p>
-          <p class="text-sm text-gray-600">The Space is a 501(c)(3) organization and community hub, focused on bitcoin education.</p>
+          <p class="font-semibold text-lg text-gray-200">What is The Space?</p>
+          <p class="text-sm text-gray-400">The Space is a bitcoin citadel and social hub, focused on education, collaboration, and community building.</p>
         </div>
         <div class="mt-6">
-          <p class="font-semibold text-lg text-black">What about alt-coins?</p>
-          <p class="text-sm text-gray-600">We're a bitcoin only organization. No distractions.</p>
+          <p class="font-semibold text-lg text-gray-200">Where is The Space?</p>
+          <p class="text-sm text-gray-400">Our physical location is not yet open. We're moving forward with a real estate opportunity - targeting a Fall 2024 launch. You can still sign up to be a founding member to help us build our treasury and support the movement.</p>
         </div>
         <div class="mt-6">
-          <p class="font-semibold text-lg text-black">How can I become a member?</p>
-          <p class="text-sm text-gray-600">You can apply for membership by filling out the contact us form. We'll follow up to get you onboarded!</p>
+          <p class="font-semibold text-lg text-gray-200">Do I need to be a member to physically access The Space?</p>
+          <p class="text-sm text-gray-400">Yes. Members will get full time access to our physical location. Certain events are ticketed or free with public access.</p>
         </div>
         <div class="mt-6">
-          <p class="font-semibold text-lg text-black">Where does my money go?</p>
-          <p class="text-sm text-gray-600">All membership dues, donations, ticketed events and other revenue streams are reinvested into The Space or used to service our operational costs. Our board of directors take no compensation.</p>
+          <p class="font-semibold text-lg text-gray-200">How can I become a member?</p>
+          <p class="text-sm text-gray-400">You can apply for membership by filling out the contact us form. We'll follow up to get you onboarded!</p>
         </div>
         <div class="mt-6">
-          <p class="font-semibold text-lg text-black">How can I support The Space?</p>
-          <p class="text-sm text-gray-600">You can support The Space by becoming a member, attending our events, and making donations to support our initiatives.</p>
+          <p class="font-semibold text-lg text-gray-200">How many members are there?</p>
+          <p class="text-sm text-gray-400">We have over 33 incredible founding members. As currently defined in our By-Laws, The Space is limited to a maximum of 210 members.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-gray-200">Where does my money go?</p>
+          <p class="text-sm text-gray-400">All membership dues, donations, sponsors, ticketed events and other revenue streams are used to service our operational costs or reinvested into The Space. Our board of directors take no compensation.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-gray-200">How can I support The Space?</p>
+          <p class="text-sm text-gray-400">You can support The Space by becoming a member, attending our events, making donations or sponsoring to support our initiatives.</p>
+        </div>
+        <div class="mt-6">
+          <p class="font-semibold text-lg text-gray-200">What about alt-coins?</p>
+          <p class="text-sm text-gray-400">We're a bitcoin only organization. No distractions.</p>
         </div>
       </section>
     </Container>
+  </div>
 
-  </Container>
 </Layout>
 
 <style>
   .bg-gradient {
-    background: linear-gradient(135deg,#ffffff, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #ffffff);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
   }
@@ -126,8 +163,12 @@ import Sectionhead from "@components/sectionhead.astro";
     transform: translateY(-5px);
   }
 
+  .faq-gradient {
+    background: linear-gradient(135deg, #000000, #000000);
+  }
+
   .doc-card {
-    background: linear-gradient(135deg,#ffffff, #ffffff);
+    background: linear-gradient(135deg, #ffffff, #ffffff);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease;
   }
@@ -138,5 +179,10 @@ import Sectionhead from "@components/sectionhead.astro";
 
   .faq-section p {
     margin-bottom: 1rem;
+  }
+
+  .section-title .icon {
+    width: 36px;
+    height: 36px;
   }
 </style>

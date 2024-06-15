@@ -58,7 +58,7 @@ pastEvents = pastEvents.sort((a, b) => {
               <div class="mt-4 text-center px-4">
                 {event.data.url ? (
                   <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-white hover:underline">
-                    {event.data.title}
+                    RSVP: {event.data.title}
                   </a>
                 ) : (
                   <h3 class="text-lg text-white">{event.data.title}</h3>
@@ -92,7 +92,7 @@ pastEvents = pastEvents.sort((a, b) => {
             <div class="mt-4 text-center px-4">
               {event.data.url ? (
                 <a href={event.data.url} target="_blank" rel="noopener noreferrer" class="text-lg text-white hover:underline">
-                  {event.data.title}
+                  RSVP: {event.data.title}
                 </a>
               ) : (
                 <h3 class="text-lg text-white">{event.data.title}</h3>

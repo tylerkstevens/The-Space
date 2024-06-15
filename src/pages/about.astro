@@ -160,24 +160,7 @@ const values = [
     background: url('/assets/branding/Logos/TheSpace_Logos_Symbol_2.png') no-repeat center center;
     background-size: contain;
   }
-
-  @media (min-width: 1025px) {
-    .custom-padding {
-      padding: 0 68px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .custom-padding {
-      padding: 0 20px;
-    }
-  }
-
   @media (max-width: 768px) {
-    .custom-padding {
-      padding: 0 15px;
-    }
-
     th, td {
       padding: 5px;
       font-size: 12px;
@@ -189,10 +172,6 @@ const values = [
   }
 
   @media (max-width: 480px) {
-    .custom-padding {
-      padding: 0 10px;
-    }
-
     th, td {
       padding: 1px;
       font-size: 10px;
@@ -254,28 +233,35 @@ const values = [
     <Sectionhead>
       <Fragment slot="title">About The Space</Fragment>
       <Fragment slot="desc">
-        The Space is a bitcoin citadel and community hub located in Denver, CO. <br/><br/>
-        Our nonprofit organization is dedicated to freedom and bitcoin initiatives. We offer a place for those in The Space to connect, work, socialize and learn.
-        Join us for our events, presentations and workshops. Enter The Space!
+        <p class="text-lg mt-4  text-slate-600 px-0 md:px-4 lg:px-10">
+          The Space is a bitcoin citadel and community hub located in Denver, CO. <br/>
+        </p>
+        <p class="text-lg mt-4 text-justify text-slate-600 px-0 md:px-4 lg:px-10">
+          Our organization is dedicated to freedom and bitcoin initiatives. We offer a place for those in The Space to connect, work, socialize and learn.
+        Join us for our events, presentations, workshops and more. Enter The Space!
+        </p>
       </Fragment>
     </Sectionhead>
 
     <div class="space-y-16 px-4">
-      <section class="flex flex-col mt-20 items-center lg:space-y-8">
-        <img src="/assets/branding/Logos/TheSpace_Logos_Ring_3crop.png" alt="Logo Image" class="w-full lg:w-5/6 rounded-lg" style="box-shadow: none;" />
+      <section class="flex flex-col mt-24 mb-24 items-center lg:space-y-7">
+        <img src="/assets/branding/Logos/TheSpace_Logos_Ring_3crop.png" alt="Logo Image" class="w-full lg:w-11/12 rounded-lg" style="box-shadow: none;" />
       </section>
 
-      <section class="text-center py-10 px-4 bg-black rounded-lg shadow-md">
-        <h2 class="text-3xl font-bold text-white">Our Vision</h2>
-        <ul class="list-custom mx-auto max-w-1xl mt-10 text-lg text-white">
-          <li>An organization with global influence, advancing freedom in the digital age.</li>
-          <li>A community of outstanding individuals and organizations aligned with our principles and values.</li>
-          <li>The premier place to collaborate, network, educate, and support creative development for bitcoin and sovereign tech.</li>
-        </ul>
-      </section>
+      <div class="px-0 md:px-4 lg:px-6">
+        <section class="text-center py-10 px-4 bg-black rounded-lg shadow-md max-w-screen-lg mx-auto">
+          <h2 class="text-4xl font-bold text-white">Vision</h2>
+          <ul class="list-custom mx-auto max-w-1xl mt-10 text-lg text-white">
+            <li>An organization with global influence, advancing freedom in the digital age.</li>
+            <li>A community of outstanding individuals and organizations aligned with our principles and values.</li>
+            <li>The premier place to collaborate, network, educate, and support creative development in the bitcoin space.</li>
+          </ul>
+        </section>
+      </div>
+      
 
       <section class="mt-16">
-        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">Our Values</h2>
+        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-24">Our Values</h2>
         <p class="text-lg mt-4 text-slate-600">What we stand for</p>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
           {values.map((item) => (
@@ -295,7 +281,7 @@ const values = [
   </Container>
 
   <div class="custom-gradient py-12 mt-20">
-    <section class="text py-10 text-center custom-padding">
+    <section class="text py-10 text-center max-w-screen-lg mx-auto px-2 md:px-8 lg:px-0">
       <h2 class="mt-0 mb-10 text-4xl text-center font-bold text-white">Something Unique</h2>
       <div class="overflow-auto mt-8 px-8 table-wrapper">
         <table class="unique-table mx-auto">
@@ -365,8 +351,8 @@ const values = [
 
     <section class="py-10 mt-4 mb-0 px-4">
       <h2 class="text-4xl text-center font-bold text-white">How We Got Here</h2>
-      <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
-        The idea for The Space was born at a Denver BitDevs event in the fall of 2023. High attendance and engagement highlighted a strong interest in establishing a bitcoin citadel on the Rocky Mountain front range. Over the following months, our dedicated founding volunteers gathered weekly to refine our vision and work to bring The Space to life.
+      <p class="mt-10 text-lg text-white mx-auto max-w-5xl">
+        The idea for The Space was born at a Denver BitDevs event in the fall of 2023. Consistent attendance and engagement highlighted a strong interest in establishing a bitcoin citadel on the Rocky Mountain front range. Over the following months, our dedicated founding volunteers gathered weekly to refine the vision and work to bring The Space to life.
       </p>
       <div class="mt-10 mx-auto max-w-2xl p-6" style="background-color: #131313; border-radius: 0.5rem; box-shadow: 0 2px 4px rgb(0, 0, 0);">
         <ul class="text-lg text-white list-disc list-inside">
@@ -381,9 +367,6 @@ const values = [
           <li>Real estate scouting</li>
         </ul>
       </div>
-      <p class="mt-10 text-lg text-white mx-auto max-w-2xl">
-        Our team has made significant progress towards opening our physical community hub.
-      </p>
     </section>
   </div>
 
