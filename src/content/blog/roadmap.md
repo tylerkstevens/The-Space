@@ -3,7 +3,7 @@ draft: false
 title: "Roadmap"
 snippet: "Founding Roadmap of The Space"
 image: {
-    src: "/assets/blog/post2/roadmap.png",
+    src: "/assets/blog/post2/roadmap.webp",
     alt: "The Space Founding Roadmap"
 }
 publishDate: "2024-04-27 21:00"

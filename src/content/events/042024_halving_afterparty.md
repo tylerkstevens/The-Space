@@ -7,7 +7,7 @@ description: "Join us in celebrating the 4th bitcoin halving at a member exclusi
 access: "Member Exclusive"
 url: ""
 image: {
-    src: "/assets/events/halving_afterparty.jpg",
+    src: "/assets/events/halving_afterparty.webp",
     alt: "Halving After Party"
 }
 ---

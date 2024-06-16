@@ -7,7 +7,7 @@ description: "Founding Block Height, Real Estate & Treasury Update, Charter, Val
 access: "Public"
 url: "https://partiful.com/e/EMyCxMrdVnnc6U6q8HDS"
 image: {
-    src: "/assets/events/foundingevent_flyer.jpg",
+    src: "/assets/events/foundingevent_flyer.webp",
     alt: "Founding Event"
 }
 ---

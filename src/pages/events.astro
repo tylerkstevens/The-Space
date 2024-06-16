@@ -39,7 +39,7 @@ pastEvents = pastEvents.sort((a, b) => {
           upcomingEvents.map(event => (
             <div class="group border-4 border-[#ffffff] rounded-lg p-2 event-card">
               <div class="relative w-full aspect-square">
-                <img src={event.data.image?.src || '/default-event-image.png'}
+                <img src={event.data.image?.src || '/default-event-image.webp'}
                     alt={event.data.title}
                     class="w-full rounded bg-white object-cover object-center aspect-square" />
                 <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
@@ -79,7 +79,7 @@ pastEvents = pastEvents.sort((a, b) => {
         {pastEvents.map(event => (
           <div class="group border-4 border-[#ffffff] rounded-lg p-2 event-card">
             <div class="relative w-full aspect-square">
-              <img src={event.data.image?.src || '/default-event-image.png'}
+              <img src={event.data.image?.src || '/default-event-image.webp'}
                   alt={event.data.title}
                   class="w-full rounded bg-white object-cover object-center aspect-square" />
               <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">

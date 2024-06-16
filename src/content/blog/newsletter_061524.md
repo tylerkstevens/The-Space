@@ -48,7 +48,7 @@ Let's get into the updates.
 
 Here's a sneak peek.
 
-![The Space Website Teaser](/assets/blog/post3/website_teaser.jpg "Revamped Website Teaser")
+![The Space Website Teaser](/assets/blog/post3/website_teaser.webp "Revamped Website Teaser")
 
 ### Legal
 
