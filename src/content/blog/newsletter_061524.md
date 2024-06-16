@@ -15,7 +15,7 @@ tags: [newsletter, roadmap, membership, events, RE]
 
 Hello to all of our founding members and supporters. I'm excited to write the first newsletter update for The Space. It's been two and a half months since our founding event night, and we have a handful of updates to share.
 
-First and foremost, I want to thank everyone for their continued support as founding members. Your monthly pre-dues and involvement have been critical for our recent developments. Low time preference is the name of the game. The board of directors, officers, and committee members are working to bring the first member-run bitcoin citadel, right here in Denver, CO. Throughout the process, we're focused on doing things right.
+First and foremost, I want to thank everyone for their continued support as founding members. Your monthly pre-dues and involvement have been critical for our recent developments. Low time preference is the name of the game. The board of directors, officers, and committee members are working to bring the first member-run bitcoin citadel, right here to Denver, CO. Throughout the process, we're focused on doing things right.
 
 Let's get into the updates.
 
