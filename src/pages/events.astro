@@ -40,8 +40,8 @@ pastEvents = pastEvents.sort((a, b) => {
             <div class="group border-4 border-[#ffffff] rounded-lg p-2 event-card">
               <div class="relative w-full aspect-square">
                 <img src={event.data.image?.src || '/default-event-image.png'}
-                     alt={event.data.title}
-                     class="w-full rounded bg-white object-cover object-center aspect-square" />
+                    alt={event.data.title}
+                    class="w-full rounded bg-white object-cover object-center aspect-square" />
                 <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
                   <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
                   {event.data.access !== "Member Exclusive" ? (
@@ -80,8 +80,8 @@ pastEvents = pastEvents.sort((a, b) => {
           <div class="group border-4 border-[#ffffff] rounded-lg p-2 event-card">
             <div class="relative w-full aspect-square">
               <img src={event.data.image?.src || '/default-event-image.png'}
-                   alt={event.data.title}
-                   class="w-full rounded bg-white object-cover object-center aspect-square" />
+                  alt={event.data.title}
+                  class="w-full rounded bg-white object-cover object-center aspect-square" />
               <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
                 <h3 class="text-lg font-semibold text-center w-full">{event.data.title}</h3>
                 <p class="w-full">Date:<br/>{new Date(event.data.date).toLocaleString("en-US", { dateStyle: 'full', timeStyle: 'short' })}</p>
@@ -113,26 +113,21 @@ pastEvents = pastEvents.sort((a, b) => {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
   }
-
   .event-card:hover {
     transform: translateY(-5px);
   }
-
   .custom-gradient {
     background: linear-gradient(135deg, #E51F5D, #F68830, #F5D54C, #FDE3B7);
   }
-
   .event-grid {
     display: grid;
     grid-template-columns: 1fr;
   }
-
   @media (min-width: 768px) {
     .event-grid {
       grid-template-columns: 1fr 1fr;
     }
   }
-
   @media (max-width: 768px) and (orientation: landscape) {
     .event-grid {
       grid-template-columns: 1fr 1fr;

@@ -36,14 +36,14 @@ const makeTitle = title
       canonical={canonicalURL}
       twitter={{
         creator: "@spacedenver",
-        site: "@@spacedenver",
+        site: "@spacedenver",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `The Space - Denver's Premier Bitcoin Venue`,
+          title: `The Space - Denver's Premier Bitcoin Citadel`,
           image: resolvedImageWithDomain,
         },
         image: {
@@ -57,12 +57,10 @@ const makeTitle = title
     <div class="container mx-auto px-4">
       <Navbar />
     </div>
-    
     <!-- Main content area -->
     <main class="flex-grow mt-0"> <!-- Added margin-top to reduce spacing -->
       <slot />
     </main>
-    
     <!-- Footer area -->
     <Footer />
 
@@ -72,22 +70,18 @@ const makeTitle = title
       img {
         content-visibility: auto;
       }
-
       /* Ensure the footer is always at the bottom and the background is black */
       body {
         background-color: white;
       }
-
       footer {
         background-color: black;
       }
-
       /* Additional styles to prevent margin collapse */
       main {
         display: flex;
         flex-direction: column;
       }
-
       /* Reduce spacing between navbar and header */
       header {
         margin-top: 0;

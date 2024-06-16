@@ -69,27 +69,22 @@ const publishedBlogEntries = (await getCollection("blog", ({ data }) => !data.dr
     grid-template-columns: 20% 1fr;
     gap: 1rem;
   }
-
   .blog-post-no-image .blog-post-grid {
     grid-template-columns: 1fr;
   }
-
   @media (max-width: 768px) {
     .blog-post-grid {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
     }
-
     .text-content {
       padding-top: 0;
     }
   }
-
   .blog-card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
   }
-
   .blog-card:hover {
     transform: translateY(-5px);
   }
