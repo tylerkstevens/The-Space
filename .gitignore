@@ -24,6 +24,5 @@ pnpm-debug.log*
 .idea/
 
 # Docker Ignore
-Dockerfile
 .dockerignore
 .gitignore
