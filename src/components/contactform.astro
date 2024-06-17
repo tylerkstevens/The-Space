@@ -11,7 +11,7 @@ import Button from "./ui/button.astro";
   <input
     type="hidden"
     name="access_key"
-    value={import.meta.env.PUBLIC_EMAIL_KEY}
+    value={process.env.PUBLIC_EMAIL_KEY}
   />
   <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
   <div class="mb-5">
