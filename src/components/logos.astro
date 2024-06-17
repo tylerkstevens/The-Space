@@ -54,10 +54,10 @@ const sponsors = [
       <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class="block">
         {sponsor.format === 'svg' ? (
           <div class="h-12 w-12 md:h-20 md:w-20 white-svg">
-            <img src={sponsor.src} alt={sponsor.alt} class="object-contain h-full w-full" />
+            <img src={sponsor.src} alt={sponsor.alt} loading="eager" class="object-contain h-full w-full" />
           </div>
         ) : (
-          <img src={sponsor.src} alt={sponsor.alt} class="h-12 w-12 md:h-20 md:w-20 object-contain" />
+          <img src={sponsor.src} alt={sponsor.alt} loading="eager" class="h-12 w-12 md:h-20 md:w-20 object-contain" />
         )}
       </a>
     ))}

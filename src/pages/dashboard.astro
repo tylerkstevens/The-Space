@@ -78,6 +78,7 @@ const upcomingEvents = await getCollection("events", ({ data }) => {
                 <div class="group event-card border-4 border-[#ffffff] rounded-lg p-2 transition-transform duration-500 ease hover:transform hover:translate-y-1">
                   <div class="relative w-full aspect-square">
                     <img src={event.data.image?.src || '/default-event-image.webp'}
+                         loading="eager"
                          alt={event.data.title}
                          class="w-full rounded bg-white object-cover object-center aspect-square" />
                     <div class="absolute inset-0 bg-black bg-opacity-90 opacity-0 transition-opacity duration-300 flex flex-col justify-center items-start text-white p-4 space-y-3 group-hover:opacity-100">
