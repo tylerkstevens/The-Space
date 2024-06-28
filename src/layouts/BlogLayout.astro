@@ -2,32 +2,51 @@
 import { Picture } from "astro:assets"; // Ensure this import is at the top of your file
 const { title, snippet, image, publishDate, category, author } = Astro.props;
 ---
-<article class="mb-16">
-  <header class="mb-8">
-    <h1 class="text-4xl font-bold mb-2">{title}</h1>
-    <p class="text-lg text-gray-500">{snippet}</p>
-    <div class="flex gap-2 mt-2">
-      <span class="text-gray-400">{author}</span>
-      <span class="text-gray-400">•</span>
-      <time class="text-gray-400" datetime={publishDate.toISOString()}>
-        {new Date(publishDate).toDateString()}
-      </time>
-    </div>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | The Space Blog</title>
+    
+    <!-- Google analytics tag (gtag.js) -->
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-HTX651VJC4"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HTX651VJC4');
+    </script>
+  </head>
+  <body>
+    <article class="mb-16">
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-2">{title}</h1>
+        <p class="text-lg text-gray-500">{snippet}</p>
+        <div class="flex gap-2 mt-2">
+          <span class="text-gray-400">{author}</span>
+          <span class="text-gray-400">•</span>
+          <time class="text-gray-400" datetime={publishDate.toISOString()}>
+            {new Date(publishDate).toDateString()}
+          </time>
+        </div>
+      </header>
 
-  {image?.src && (
-    <Picture
-      src={image.src}
-      alt={image.alt || 'Blog Post Image'}
-      sizes="(max-width: 800px) 100vw, 800px"
-      width={800}
-      height={600}
-      loading="eager"
-      class="w-full rounded-md object-cover object-center bg-white mb-8"
-    />
-  )}
+      {image?.src && (
+        <Picture
+          src={image.src}
+          alt={image.alt || 'Blog Post Image'}
+          sizes="(max-width: 800px) 100vw, 800px"
+          width={800}
+          height={600}
+          loading="eager"
+          class="w-full rounded-md object-cover object-center bg-white mb-8"
+        />
+      )}
 
-  <div class="prose">
-    <slot />
-  </div>
-</article>
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+  </body>
+</html>
