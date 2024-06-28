@@ -2,7 +2,7 @@
 draft: false
 name: "Tyler S."
 title: "Chief Executive Officer"
-bio: "Founder of Exergy, an engieering firm that designs bitcoin mining systems for waste-heat reuse."
+bio: "Founder of Exergy, an engieering consulting firm that designs heating systems powerd by bitcoin mining."
 avatar: {
     src: "/assets/headshots/tyler.webp",
     alt: "Tyler S."
