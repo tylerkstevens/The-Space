@@ -7,7 +7,11 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [partytown()],
+  integrations: [partytown({
+    config: {
+      forward: ["dataLayer.push"],
+    },
+  })],
   site: "https://denver.space",
   output: "server",
   adapter: node({

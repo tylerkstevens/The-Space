@@ -2,20 +2,26 @@
 import { Picture } from "astro:assets"; // Ensure this import is at the top of your file
 const { title, snippet, image, publishDate, category, author } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} | The Space Blog</title>
-    
+
     <!-- Google analytics tag (gtag.js) -->
-    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-HTX651VJC4"></script>
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5QSSGYQY77"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HTX651VJC4');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5QSSGYQY77");
     </script>
   </head>
   <body>
@@ -32,17 +38,19 @@ const { title, snippet, image, publishDate, category, author } = Astro.props;
         </div>
       </header>
 
-      {image?.src && (
-        <Picture
-          src={image.src}
-          alt={image.alt || 'Blog Post Image'}
-          sizes="(max-width: 800px) 100vw, 800px"
-          width={800}
-          height={600}
-          loading="eager"
-          class="w-full rounded-md object-cover object-center bg-white mb-8"
-        />
-      )}
+      {
+        image?.src && (
+          <Picture
+            src={image.src}
+            alt={image.alt || "Blog Post Image"}
+            sizes="(max-width: 800px) 100vw, 800px"
+            width={800}
+            height={600}
+            loading="eager"
+            class="w-full rounded-md object-cover object-center bg-white mb-8"
+          />
+        )
+      }
 
       <div class="prose">
         <slot />
