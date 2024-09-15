@@ -3,14 +3,14 @@ import { Tick } from "@components/ui/icons";
 import Link from "@components/ui/link.astro";
 
 const { plan } = Astro.props;
-const isComingSoon = plan.name !== "Become a Sponsor" && plan.name !== "Founding Member - Temporary Until Physical Location";
-const isTemporaryOption = plan.name === "Founding Member - Temporary Until Physical Location";
+const isComingSoon = plan.name !== "Public" && plan.name !== "Base Membership" && plan.name !== "Full Co-Working Membership" && plan.name !== "Become a Sponsor";
+const isMainOption = plan.name === "Base Membership" || plan.name === "Full Co-Working Membership";
 const isSponsorCard = plan.name === "Become a Sponsor";
-const isLowerTier = ["Public", "Member", "Add-Ons"].includes(plan.name);
+const isLowerTier = ["Public", "Day Pass", "Add-Ons"].includes(plan.name);
 ---
 
-<div class="flex flex-col h-full">
-  <div class={`flex flex-col w-full order-first lg:order-none border-4 border-[#ffffff] py-10 px-6 rounded-md relative ${isLowerTier ? 'bg-[#ffffff] border-[#ffffff]' : isSponsorCard || isTemporaryOption ? 'bg-gradient' : 'bg-[#D9314A] border-[#000000]'}`} style={`min-height: ${isSponsorCard ? '350px' : (isTemporaryOption ? '450px' : '600px')}`}>
+<div class="flex flex-col h-full min-h-full">
+  <div class={`flex flex-col w-full h-full order-first lg:order-none border-4 border-[#ffffff] py-10 px-6 rounded-md relative ${isLowerTier ? 'bg-[#ffffff] border-[#ffffff]' : isSponsorCard || isMainOption ? 'bg-gradient' : 'bg-[#D9314A] border-[#000000]'}`} style={`min-height: ${isSponsorCard ? '350px' : (isMainOption ? '450px' : '600px')}`}>
     <div class={`absolute top-0 left-0 px-2 py-1 bg-blue-500 text-white rounded-br-md ${isComingSoon ? '' : 'hidden'}`}>Coming Soon</div>
     <div class="text-center mb-8">
       <h4 class={`text-lg font-medium ${isLowerTier ? 'text-black' : 'text-white'}`}>{plan.name}</h4>
