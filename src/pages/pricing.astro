@@ -6,64 +6,94 @@ import PricingCard from "@components/pricing.astro";
 
 const pricing = [
   {
-    name: "Founding Member - Temporary Until Physical Location",
-    price: {
-      monthly: "$125/mo",
-      annual: "$1500",
-      discount: "17%",
-      original: "$150",
-    },
-    popular: true,
-    features: [
-      "Members Only Events",
-      "Private Messaging Channels",
-      "Nostr Verification",
-      "Extensive Involvement Opportunities",
-      "Support a Grassroots Bitcoin Innitiative",
-      "Founding Member Recognition & Satisfaction",
-    ],
-    button: {
-      text: "Apply for Membership",
-      link: "https://tally.so/r/w2k9oD",
-    },
-  },
-  {
-    name: "Public",
-    price: "Free",
-    popular: false,
-    features: [
-      "Free & Ticketed Events",
-      "Public Content and Education",
-      "Open Source Documentation",
-      "Newsletter",
-      "and more...",
-    ],
-    button: {
-      text: "See What's Going On",
-      link: "/",
-    },
-  },
-  {
-    name: "Member",
+    name: "Base Membership",
     price: {
       monthly: "$150/mo",
       annual: "$1800",
       discount: "0%",
       original: "$150",
     },
-    popular: false,
+    popular: true,
     features: [
-      "Exclusive Events & Seminars",
-      "Private Messaging Channels",
-      "Shared Desk and Lounge Space",
-      "Coworking and Creator Amenities",
-      "Physical Community Hub Access",
-      "Networking",
-      "+ Free Benefits & more...",
+      "Building Access - After Hours & Weekends",
+      "Daytime Co-Working Access - 1 Day / Week",
+      "Workspace & Creator Amenities",
+      "Extensive Involvement Opportunities",
+      "Priority Access & Discounted Rates to Member Events",
+      "Private Messaging Channels, NOSTR Verification and More",
+      "Bitcoin & Soverign Tech Benefits - Liquidity, Server Storage, Mint, etc.",
+      "Exclusive Member of the First Community-Run Bitcoin Citadel",
     ],
     button: {
       text: "Apply for Membership",
       link: "https://tally.so/r/w2k9oD",
+    },
+  },
+  {
+    name: "Full Co-Working Membership",
+    price: {
+      monthly: "$300/mo",
+      annual: "$3600",
+      discount: "0%",
+      original: "$300",
+    },
+    popular: true,
+    features: [
+      "Building Access - 24/7",
+      "Daytime Co-Working Access - Unlimited",
+      "Conference Room Booking",
+      "Private Call Space",
+      "Extensive Desk and Lounge Space",
+      "Daily Interaction with the Brightest Minds in Bitcoin",
+      "+ Base Membership Benefits & more...",
+    ],
+    button: {
+      text: "Apply for Membership",
+      link: "https://tally.so/r/w2k9oD",
+    },
+  },
+
+  {
+    name: "Public",
+    price: {
+      monthly: "Free",
+      annual: "$0",
+      discount: "0%",
+      original: "$0",
+    },
+    popular: false,
+    features: [
+      "Free & Ticketed Events",
+      "Public Content and Education",
+      "Public Workshops and Presentations",
+      "Open Source Documentation",
+      "Public Newsletter",
+      "and more...",
+    ],
+    button: {
+      text: "See What's Going On",
+      link: "/events",
+    },
+  },
+  {
+    name: "Day Pass",
+    price: {
+      monthly: "TBD",
+      annual: "$0",
+      discount: "0%",
+      original: "$0",
+    },
+    popular: false,
+    features: [
+      "Full Day of Building Access",
+      "Workspace & Creator Amenities",
+      "Networking & Socialization",
+      "Support a Grassroots Community",
+      "+ Free Benefits & more...",
+    ],
+    button: {
+      text: "Express your Interest",
+      link: "/contact",
     },
   },
   {
@@ -75,7 +105,6 @@ const pricing = [
       "Private Event Hosting",
       "Sponsorship Opportunities",
       "Consignment Merchandising",
-      "Lightning Channel Liquidity",
       "One-on-One Education",
       "+ Member Benefits & more...",
     ],
@@ -93,14 +122,12 @@ const pricing = [
     <Container>
       <Sectionhead>
         <Fragment slot="title">Membership</Fragment>
-        <Fragment slot="desc"> Simple Pricing. No Surprises. <br/><br/>
-          We’re building The Space. Become a founding member by paying predues to help us create this citadel from the ground up. <br/>
+        <Fragment slot="desc"> Simple Pricing. No Surprises. <br/>
         </Fragment>
       </Sectionhead>
-      <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-2xl mt-12 mb-12">
-        <div class="md:col-span-3 md:mb-8">
-          <PricingCard plan={pricing[0]} />
-        </div>
+      <div class="grid md:grid-cols-2 gap-6 mx-auto max-w-4xl mt-12 mb-12 items-stretch h-full">
+        <PricingCard plan={pricing[0]} />
+        <PricingCard plan={pricing[1]} />
       </div>
     </Container>
   </div>
@@ -109,9 +136,10 @@ const pricing = [
   <div class="bg-black py-12">
     <Container>
       <div class="grid md:grid-cols-3 gap-6 mx-auto max-w-6xl mt-12">
-        {pricing.slice(1).map((item) => (
+        {pricing.slice(2).map((item) => (
           <PricingCard plan={item} />
         ))}
       </div>
     </Container>
   </div>
+</Layout>
